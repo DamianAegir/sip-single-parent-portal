@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Support | SingleParentSG</title>
+  <meta name="description" content="Reach out for support and find key emergency hotlines for single parents in Singapore." />
+  <link rel="stylesheet" href="../css/contact.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">SP</span>
+        <span class="logo-text">SingleParentSG</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="financial-aid.html" class="nav-link">Financial Aid</a></li>
+          <li><a href="resources.html" class="nav-link">Resources</a></li>
+          <li><a href="contact.html" class="nav-link nav-link-active">Contact & Support</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">You are not alone</p>
+        <h1>Contact &amp; Support</h1>
+        <p class="intro">
+          If you are feeling overwhelmed, reaching out is a strong step. Use this form for non-urgent questions about the site,
+          or call an emergency hotline if you need immediate help.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <section aria-labelledby="contact-form-heading" class="contact-card card">
+          <h2 id="contact-form-heading">Send us a message</h2>
+          <p class="contact-text">
+            This form is for general questions and feedback about this website. We cannot process applications for schemes.
+          </p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+              <p class="error-message" id="name-error"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+              <p class="error-message" id="email-error"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+              <p class="error-message" id="message-error"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <p class="form-success" id="form-success" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section aria-labelledby="hotlines-heading" class="hotlines-card card">
+          <h2 id="hotlines-heading">Emergency &amp; immediate support</h2>
+          <p class="contact-text">
+            If you or your child is in danger, call the emergency services right away.
+          </p>
+
+          <ul class="hotline-list">
+            <li>
+              <h3>Police / SCDF</h3>
+              <p><strong>999</strong> (Police) &middot; <strong>995</strong> (Ambulance/Fire)</p>
+              <p>For crimes, violence, or life-threatening emergencies.</p>
+            </li>
+            <li>
+              <h3>Samaritans of Singapore (SOS)</h3>
+              <p><strong>1-767</strong> (1-SOS) &middot; 24-hour hotline</p>
+              <p>For emotional support if you are feeling distressed, hopeless, or having thoughts of self-harm.</p>
+            </li>
+            <li>
+              <h3>National Care Hotline</h3>
+              <p><strong>1800-202-6868</strong></p>
+              <p>Emotional support and practical advice during difficult times.</p>
+            </li>
+            <li>
+              <h3>ComCare Call</h3>
+              <p><strong>1800-222-0000</strong></p>
+              <p>For financial assistance and social support enquiries.</p>
+            </li>
+          </ul>
+
+          <p class="contact-text">
+            For non-urgent support, you may also contact your nearest Family Service Centre. They can walk through options and
+            applications with you.
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark logo-mark-footer">SP</span>
+        <span class="footer-text">SingleParentSG — Independent information hub for single parents in Singapore.</span>
+      </div>
+      <div class="footer-links">
+        <a href="resources.html">Find resources</a>
+        <a href="financial-aid.html">Financial aid guides</a>
+      </div>
+      <p class="footer-disclaimer">
+        This is an informational prototype and is not an official government website. Please verify details with the relevant agencies.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../js/contact.js"></script>
+</body>
+</html>
+

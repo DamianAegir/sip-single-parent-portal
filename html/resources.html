@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources Directory | SingleParentSG</title>
+  <meta name="description" content="Browse childcare, food aid, and counselling resources that support single parents across Singapore." />
+  <link rel="stylesheet" href="../css/resources.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">SP</span>
+        <span class="logo-text">SingleParentSG</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="financial-aid.html" class="nav-link">Financial Aid</a></li>
+          <li><a href="resources.html" class="nav-link nav-link-active">Resources</a></li>
+          <li><a href="contact.html" class="nav-link">Contact & Support</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Caregiving &amp; community</p>
+        <h1>Resource Directory</h1>
+        <p class="intro">
+          Filter by what you need – childcare, food assistance, or counselling. Each card gives a short description and how to contact them.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="filter-heading">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="filter-heading">Filter by type of help</h2>
+          <p>Select one to focus, or show all resources again.</p>
+        </header>
+
+        <div class="filter-bar" role="tablist" aria-label="Resource category filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" data-filter="childcare" role="tab" aria-selected="false">Childcare</button>
+          <button class="filter-btn" data-filter="food" role="tab" aria-selected="false">Food Aid</button>
+          <button class="filter-btn" data-filter="counselling" role="tab" aria-selected="false" id="counselling">Counselling</button>
+        </div>
+
+        <div class="search-bar">
+          <label for="search-input" class="search-label">Search by name or town</label>
+          <input type="search" id="search-input" class="search-input" placeholder="e.g. Ang Mo Kio, Clementi, Bedok" />
+        </div>
+
+        <div class="resource-grid" id="resource-list">
+          <!-- Childcare -->
+          <article class="card resource-card" data-category="childcare" data-name="Sparkletots Preschool @ Bedok" data-location="Bedok">
+            <div class="resource-thumb">
+              <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80" alt="Asian children playing together in a classroom" loading="lazy" />
+            </div>
+            <div class="resource-body">
+              <h3>Sparkletots Preschool @ Bedok</h3>
+              <p class="resource-type">Childcare &amp; preschool</p>
+              <p class="resource-meta">Bedok &bull; Full-day childcare &amp; kindergarten</p>
+              <p class="resource-desc">
+                Affordable preschool with financial support options for lower-income families. Includes learning, care, and meals.
+              </p>
+              <p class="resource-contact">
+                <strong>Contact:</strong> 6789 1234 &middot; <a href="#" aria-label="Visit Sparkletots Preschool website (placeholder)">Website</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card resource-card" data-category="childcare" data-name="My First Skool @ Ang Mo Kio" data-location="Ang Mo Kio">
+            <div class="resource-thumb">
+              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80" alt="Asian teacher and children reading a book together" loading="lazy" />
+            </div>
+            <div class="resource-body">
+              <h3>My First Skool @ Ang Mo Kio</h3>
+              <p class="resource-type">Childcare &amp; preschool</p>
+              <p class="resource-meta">Ang Mo Kio &bull; Infant care &amp; preschool</p>
+              <p class="resource-desc">
+                Neighbourhood preschool with infant care and childcare programmes, with subsidies available through MSF/ECDA.
+              </p>
+              <p class="resource-contact">
+                <strong>Contact:</strong> 6123 4567 &middot; <a href="#" aria-label="Visit My First Skool website (placeholder)">Website</a>
+              </p>
+            </div>
+          </article>
+
+          <!-- Food Aid -->
+          <article class="card resource-card" data-category="food" data-name="Food from the Heart - Clementi" data-location="Clementi">
+            <div class="resource-thumb">
+              <img src="https://images.unsplash.com/photo-1719937208565-ca8464388b43?auto=format&fit=crop&w=600&q=80" alt="Asian volunteers packing food items into bags" loading="lazy" />
+            </div>
+            <div class="resource-body">
+              <h3>Food from the Heart - Clementi</h3>
+              <p class="resource-type">Food assistance</p>
+              <p class="resource-meta">Clementi &bull; Monthly food packs</p>
+              <p class="resource-desc">
+                Provides regular food support to families in need through community food packs and school-based programmes.
+              </p>
+              <p class="resource-contact">
+                <strong>Contact:</strong> 6899 1234 &middot; <a href="#" aria-label="Visit Food from the Heart website (placeholder)">Website</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card resource-card" data-category="food" data-name="Free Food for All @ Bedok North" data-location="Bedok">
+            <div class="resource-thumb">
+              <img src="https://images.unsplash.com/photo-1514986888952-8cd320577b68?auto=format&fit=crop&w=600&q=80" alt="Asian family enjoying a meal together at a table" loading="lazy" />
+            </div>
+            <div class="resource-body">
+              <h3>Free Food for All @ Bedok North</h3>
+              <p class="resource-type">Halal food support</p>
+              <p class="resource-meta">Bedok North &bull; Ready-to-eat meals</p>
+              <p class="resource-desc">
+                Provides halal cooked meals and essential groceries to low-income families, including single-parent households.
+              </p>
+              <p class="resource-contact">
+                <strong>Contact:</strong> 6122 3344 &middot; <a href="#" aria-label="Visit Free Food for All website (placeholder)">Website</a>
+              </p>
+            </div>
+          </article>
+
+          <!-- Counselling / FSC -->
+          <article class="card resource-card" data-category="counselling" data-name="Ang Mo Kio Family Service Centre" data-location="Ang Mo Kio">
+            <div class="resource-thumb">
+              <img src="https://images.unsplash.com/photo-1586769852044-692d6e3703c8?auto=format&fit=crop&w=600&q=80" alt="Asian mother speaking with a counsellor in an office" loading="lazy" />
+            </div>
+            <div class="resource-body">
+              <h3>Ang Mo Kio Family Service Centre</h3>
+              <p class="resource-type">Family Service Centre</p>
+              <p class="resource-meta">Ang Mo Kio &bull; Casework &amp; counselling</p>
+              <p class="resource-desc">
+                Offers counselling, financial assistance enquiries, and parenting support for individuals and families in the area.
+              </p>
+              <p class="resource-contact">
+                <strong>Contact:</strong> 6452 1234 &middot; <a href="#" aria-label="Visit Ang Mo Kio Family Service Centre website (placeholder)">Website</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card resource-card" data-category="counselling" data-name="Fei Yue Counselling Centre @ Choa Chu Kang" data-location="Choa Chu Kang">
+            <div class="resource-thumb">
+              <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=600&q=80" alt="Asian couple talking with a counsellor in a calm room" loading="lazy" />
+            </div>
+            <div class="resource-body">
+              <h3>Fei Yue Counselling Centre @ Choa Chu Kang</h3>
+              <p class="resource-type">Counselling &amp; parenting support</p>
+              <p class="resource-meta">Choa Chu Kang &bull; Individual &amp; family sessions</p>
+              <p class="resource-desc">
+                Provides counselling and parenting programmes, with experience supporting single-parent families and caregivers.
+              </p>
+              <p class="resource-contact">
+                <strong>Contact:</strong> 6762 9293 &middot; <a href="#" aria-label="Visit Fei Yue website (placeholder)">Website</a>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <p class="resource-note">
+          This is a sample list. To find more, you can search for “Family Service Centre near me” or check <a href="https://www.msf.gov.sg" target="_blank" rel="noopener noreferrer">MSF’s website</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark logo-mark-footer">SP</span>
+        <span class="footer-text">SingleParentSG — Independent information hub for single parents in Singapore.</span>
+      </div>
+      <div class="footer-links">
+        <a href="contact.html">Contact & Support</a>
+        <a href="financial-aid.html">Financial aid guides</a>
+      </div>
+      <p class="footer-disclaimer">
+        This is an informational prototype and is not an official government website. Please verify details with the relevant agencies.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../js/resources.js"></script>
+</body>
+</html>
+

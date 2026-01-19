@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Aid Guides | SingleParentSG</title>
+  <meta name="description" content="Plain-language guides to ComCare, KidSTART, and Higher Education Community Bursary for single parents in Singapore." />
+  <link rel="stylesheet" href="../css/financial-aid.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">SP</span>
+        <span class="logo-text">SingleParentSG</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="financial-aid.html" class="nav-link nav-link-active">Financial Aid</a></li>
+          <li><a href="resources.html" class="nav-link">Resources</a></li>
+          <li><a href="contact.html" class="nav-link">Contact & Support</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Financial support</p>
+        <h1>Financial Aid Guides</h1>
+        <p class="intro">
+          These guides turn complex scheme information into simple language for single parents in Singapore.
+          For full details, always check the official government websites linked in each card.
+        </p>
+      </div>
+    </section>
+
+    <section class="section checker-section" aria-labelledby="eligibility-heading">
+      <div class="container checker-grid">
+        <div>
+          <h2 id="eligibility-heading">Not sure where to start?</h2>
+          <p>
+            Answer a few quick questions and we will suggest a scheme that may be a good starting point. This is not an official assessment.
+          </p>
+        </div>
+        <form class="checker-form" id="eligibility-form">
+          <div class="form-group">
+            <label for="working-status">Are you currently working?</label>
+            <select id="working-status" name="working-status" required>
+              <option value="">Please choose</option>
+              <option value="not-working">No, I am not working</option>
+              <option value="part-time">Yes, part-time / irregular</option>
+              <option value="full-time">Yes, full-time</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="child-age">Do you have at least one child below 7 years old?</label>
+            <select id="child-age" name="child-age" required>
+              <option value="">Please choose</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="education-level">Are you supporting a child in secondary school, JC, or ITE/Poly?</label>
+            <select id="education-level" name="education-level" required>
+              <option value="">Please choose</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">See suggested scheme</button>
+
+          <div class="result" id="eligibility-result" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Key schemes for single parents</h2>
+          <p>Below are simplified explanations. Tap “View official site” on each card to confirm the latest information.</p>
+        </header>
+
+        <div class="scheme-grid">
+          <article class="card scheme-card">
+            <h3>ComCare Short-to-Medium Term Assistance</h3>
+            <p class="scheme-pill">Daily living support</p>
+            <p class="scheme-summary">
+              Monthly cash and other support to help with basic living expenses for low-income households.
+            </p>
+
+            <div class="scheme-detail">
+              <h4>Who it may help</h4>
+              <ul>
+                <li>Single parents who are unemployed or earning very low income.</li>
+                <li>Household has little or no savings and faces difficulty paying for daily needs.</li>
+                <li>Singapore Citizens or Permanent Residents living in Singapore.</li>
+              </ul>
+            </div>
+
+            <div class="scheme-detail">
+              <h4>What support can look like</h4>
+              <ul>
+                <li>Monthly cash for food and daily expenses.</li>
+                <li>Help with Service &amp; Conservancy Charges and utilities bills.</li>
+                <li>Assistance with rental for HDB flats.</li>
+              </ul>
+            </div>
+
+            <div class="scheme-detail checklist">
+              <h4>Simple application checklist</h4>
+              <ol>
+                <li>Prepare NRICs of all household members.</li>
+                <li>Collect recent payslips or income documents (if any).</li>
+                <li>Gather bank statements and HDB rental/loan documents.</li>
+                <li>Visit your nearest Social Service Office (SSO) or apply online via the official site.</li>
+              </ol>
+            </div>
+
+            <div class="scheme-links">
+              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View official site</a>
+            </div>
+          </article>
+
+          <article class="card scheme-card">
+            <h3>KidSTART</h3>
+            <p class="scheme-pill">Early childhood support</p>
+            <p class="scheme-summary">
+              Support for lower-income families to give young children a strong start in health, learning, and development.
+            </p>
+
+            <div class="scheme-detail">
+              <h4>Who it may help</h4>
+              <ul>
+                <li>Pregnant mothers and families with children aged 0–6 years old.</li>
+                <li>Lower-income households, usually staying in rental flats or with lower per capita income.</li>
+                <li>Families who may need extra support with parenting and child development.</li>
+              </ul>
+            </div>
+
+            <div class="scheme-detail">
+              <h4>What support can look like</h4>
+              <ul>
+                <li>Home visits by professionals to support parenting and child development.</li>
+                <li>Priority access to quality preschools under KidSTART.</li>
+                <li>Support for health, nutrition, and social-emotional development.</li>
+              </ul>
+            </div>
+
+            <div class="scheme-detail checklist">
+              <h4>Simple application checklist</h4>
+              <ol>
+                <li>Speak to your hospital social worker or Family Service Centre social worker.</li>
+                <li>Prepare NRIC and birth certificates for your children.</li>
+                <li>Share more about your family situation with the officer or social worker.</li>
+                <li>Wait for follow-up from the KidSTART team on your eligibility.</li>
+              </ol>
+            </div>
+
+            <div class="scheme-links">
+              <a href="https://www.ecda.gov.sg/programmes/kidstart" target="_blank" rel="noopener noreferrer" class="card-link">View official site</a>
+            </div>
+          </article>
+
+          <article class="card scheme-card">
+            <h3>Higher Education Community Bursary</h3>
+            <p class="scheme-pill">Education bursary</p>
+            <p class="scheme-summary">
+              Financial help for students from lower- and middle-income households in JC, Millennia Institute, Polytechnics and ITE.
+            </p>
+
+            <div class="scheme-detail">
+              <h4>Who it may help</h4>
+              <ul>
+                <li>Singapore Citizen students in JC, MI, Polytechnics, or ITE.</li>
+                <li>Households with lower or middle income (based on gross household income or per capita income).</li>
+                <li>Single-parent families who need help paying for school fees and daily expenses.</li>
+              </ul>
+            </div>
+
+            <div class="scheme-detail">
+              <h4>What support can look like</h4>
+              <ul>
+                <li>Subsidies for tuition fees.</li>
+                <li>Yearly bursary for living expenses, textbooks, and transport.</li>
+              </ul>
+            </div>
+
+            <div class="scheme-detail checklist">
+              <h4>Simple application checklist</h4>
+              <ol>
+                <li>Check with your child’s school or institution’s website for bursary details and forms.</li>
+                <li>Prepare NRICs, student card, and proof of household income.</li>
+                <li>Submit the bursary application online or through the school’s student portal.</li>
+                <li>Attend any interview if requested by the school.</li>
+              </ol>
+            </div>
+
+            <div class="scheme-links">
+              <a href="https://www.moe.gov.sg/financial-matters/feebursary/he-bursary" target="_blank" rel="noopener noreferrer" class="card-link">View official site</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark logo-mark-footer">SP</span>
+        <span class="footer-text">SingleParentSG — Independent information hub for single parents in Singapore.</span>
+      </div>
+      <div class="footer-links">
+        <a href="contact.html">Contact & Support</a>
+        <a href="resources.html">Find resources</a>
+      </div>
+      <p class="footer-disclaimer">
+        This is an informational prototype and is not an official government website. Please verify details with the relevant agencies.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../js/financial-aid.js"></script>
+</body>
+</html>
+

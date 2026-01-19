@@ -1,0 +1,158 @@
+@import url("style.css");
+
+/* Page-specific adjustments for Financial Aid */
+
+.page-hero {
+  padding: 2.5rem 0 1.75rem;
+  background: radial-gradient(circle at top left, #e0f2fe, #f8fafc);
+}
+
+.page-hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.9rem;
+  color: #0f172a;
+}
+
+.page-hero .intro {
+  margin: 0;
+  max-width: 640px;
+  color: #4b5563;
+  font-size: 0.98rem;
+}
+
+.checker-section {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.checker-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.checker-form {
+  background-color: #f8fafc;
+  border-radius: 16px;
+  padding: 1rem 1rem 1.25rem;
+  border: 1px solid #e5e7eb;
+}
+
+.form-group {
+  margin-bottom: 0.9rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.form-group select {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.result {
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.result strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.scheme-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.scheme-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.scheme-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background-color: #e0f2fe;
+  color: #075985;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.scheme-summary {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.scheme-detail {
+  margin-bottom: 0.75rem;
+}
+
+.scheme-detail h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.scheme-detail ul,
+.scheme-detail ol {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.scheme-detail li + li {
+  margin-top: 0.25rem;
+}
+
+.scheme-detail.checklist {
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  padding: 0.7rem 0.75rem 0.75rem;
+}
+
+.scheme-links {
+  margin-top: 0.5rem;
+}
+
+.scheme-links .card-link {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 720px) {
+  .page-hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .page-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .checker-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 2.2rem;
+  }
+
+  .checker-form {
+    padding: 1.2rem 1.25rem 1.4rem;
+  }
+
+  .scheme-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
