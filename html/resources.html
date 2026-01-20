@@ -3,196 +3,1063 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources Directory | SingleParentSG</title>
+  <title>Resource Directory | SingleParentSG</title>
   <meta name="description" content="Browse childcare, food aid, and counselling resources that support single parents across Singapore." />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/resources.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <span class="logo-mark">SP</span>
-        <span class="logo-text">SingleParentSG</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
       <nav class="site-nav" aria-label="Main">
         <ul class="nav-list">
           <li><a href="../index.html" class="nav-link">Home</a></li>
           <li><a href="financial-aid.html" class="nav-link">Financial Aid</a></li>
           <li><a href="resources.html" class="nav-link nav-link-active">Resources</a></li>
-          <li><a href="contact.html" class="nav-link">Contact & Support</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="page-hero">
-      <div class="container">
-        <p class="eyebrow">Caregiving &amp; community</p>
-        <h1>Resource Directory</h1>
-        <p class="intro">
-          Filter by what you need – childcare, food assistance, or counselling. Each card gives a short description and how to contact them.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="filter-heading">
+    <section class="section" style="padding-top: 4rem;">
       <div class="container">
         <header class="section-header">
-          <h2 id="filter-heading">Filter by type of help</h2>
-          <p>Select one to focus, or show all resources again.</p>
+          <span class="badge">Community Support</span>
+          <h2>Resource Directory</h2>
+          <p>
+            Connect with community services near you. From childcare to food aid, find the help you need to ease your daily load.
+          </p>
         </header>
 
-        <div class="filter-bar" role="tablist" aria-label="Resource category filters">
-          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter-btn" data-filter="childcare" role="tab" aria-selected="false">Childcare</button>
-          <button class="filter-btn" data-filter="food" role="tab" aria-selected="false">Food Aid</button>
-          <button class="filter-btn" data-filter="counselling" role="tab" aria-selected="false" id="counselling">Counselling</button>
+        <!-- Search & Filter Controls -->
+        <div class="filter-controls">
+          <div class="search-bar-wrapper">
+            <input type="text" id="resource-search" class="search-input" placeholder="Search resources (e.g. 'Bedok', 'Food')..." />
+            <button class="btn btn-primary search-btn">Search</button>
+            <button type="button" id="use-location-btn" class="btn btn-secondary" style="margin-left:auto; white-space:nowrap;">
+              📍 Use My Location
+            </button>
+          </div>
+          
+          <button id="toggle-advanced-filters" class="btn btn-secondary" aria-expanded="false" aria-controls="advanced-filters" style="margin-top: 1rem;">
+            Show Advanced Filters
+          </button>
         </div>
 
-        <div class="search-bar">
-          <label for="search-input" class="search-label">Search by name or town</label>
-          <input type="search" id="search-input" class="search-input" placeholder="e.g. Ang Mo Kio, Clementi, Bedok" />
+        <!-- Advanced Filter Form (Hidden by default) -->
+        <div id="advanced-filters" class="advanced-filters-panel hidden">
+          <form id="resource-filter-form" class="filter-form">
+            <div class="filter-grid">
+              <div class="form-group">
+                <label for="resource-type">Service Type</label>
+                <select id="resource-type" name="resource-type">
+                  <option value="">All Services</option>
+                  <option value="childcare">Childcare & Preschool</option>
+                  <option value="food">Food Assistance</option>
+                  <option value="counselling">Counselling</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="employment">Employment</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="location-filter">Location</label>
+                <select id="location-filter" name="location-filter">
+                  <option value="">All Locations</option>
+                  <option value="Ang Mo Kio">Ang Mo Kio</option>
+                  <option value="Bedok">Bedok</option>
+                  <option value="Bukit Batok">Bukit Batok</option>
+                  <option value="Choa Chu Kang">Choa Chu Kang</option>
+                  <option value="Clementi">Clementi</option>
+                  <option value="Hougang">Hougang</option>
+                  <option value="Jurong">Jurong</option>
+                  <option value="Pasir Ris">Pasir Ris</option>
+                  <option value="Punggol">Punggol</option>
+                  <option value="Sengkang">Sengkang</option>
+                  <option value="Tampines">Tampines</option>
+                  <option value="Woodlands">Woodlands</option>
+                  <option value="Yishun">Yishun</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="availability-filter">Availability</label>
+                <select id="availability-filter" name="availability-filter">
+                  <option value="">Any Time</option>
+                  <option value="weekdays">Weekdays</option>
+                  <option value="weekends">Weekends</option>
+                  <option value="24-7">24/7</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="cost-filter">Cost</label>
+                <select id="cost-filter" name="cost-filter">
+                  <option value="">Any Cost</option>
+                  <option value="free">Free</option>
+                  <option value="subsidised">Subsidised</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="filter-actions">
+              <button type="submit" class="btn btn-primary">Apply Filters</button>
+              <button type="reset" id="clear-resource-filters" class="btn btn-secondary">Clear Filters</button>
+            </div>
+          </form>
         </div>
+
+        <div id="resource-filter-results" class="filter-results" aria-live="polite"></div>
 
         <div class="resource-grid" id="resource-list">
           <!-- Childcare -->
-          <article class="card resource-card" data-category="childcare" data-name="Sparkletots Preschool @ Bedok" data-location="Bedok">
-            <div class="resource-thumb">
-              <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80" alt="Asian children playing together in a classroom" loading="lazy" />
-            </div>
+          <article class="resource-card" data-category="childcare" data-location="Bedok" data-age="toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
             <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
               <h3>Sparkletots Preschool @ Bedok</h3>
-              <p class="resource-type">Childcare &amp; preschool</p>
-              <p class="resource-meta">Bedok &bull; Full-day childcare &amp; kindergarten</p>
+              <p class="resource-meta">Bedok &bull; Full-day childcare</p>
               <p class="resource-desc">
                 Affordable preschool with financial support options for lower-income families. Includes learning, care, and meals.
               </p>
-              <p class="resource-contact">
-                <strong>Contact:</strong> 6789 1234 &middot; <a href="#" aria-label="Visit Sparkletots Preschool website (placeholder)">Website</a>
-              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6789 1234
+                </div>
+                <a href="https://www.google.com/maps/search/Sparkletots+Preschool+Bedok" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="card resource-card" data-category="childcare" data-name="My First Skool @ Ang Mo Kio" data-location="Ang Mo Kio">
-            <div class="resource-thumb">
-              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80" alt="Asian teacher and children reading a book together" loading="lazy" />
-            </div>
+          <article class="resource-card" data-category="childcare" data-location="Ang Mo Kio" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
             <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
               <h3>My First Skool @ Ang Mo Kio</h3>
-              <p class="resource-type">Childcare &amp; preschool</p>
               <p class="resource-meta">Ang Mo Kio &bull; Infant care &amp; preschool</p>
               <p class="resource-desc">
                 Neighbourhood preschool with infant care and childcare programmes, with subsidies available through MSF/ECDA.
               </p>
-              <p class="resource-contact">
-                <strong>Contact:</strong> 6123 4567 &middot; <a href="#" aria-label="Visit My First Skool website (placeholder)">Website</a>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6123 4567
+                </div>
+                <a href="https://www.google.com/maps/search/My+First+Skool+Ang+Mo+Kio" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="childcare" data-location="Tampines" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>PCF Sparkletots @ Tampines</h3>
+              <p class="resource-meta">Tampines &bull; Infant care to kindergarten</p>
+              <p class="resource-desc">
+                Quality early childhood education with flexible hours. Strong support for working single parents through subsidies.
               </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6583 2211
+                </div>
+                <a href="https://www.google.com/maps/search/PCF+Sparkletots+Tampines" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="childcare" data-location="Jurong" data-age="toddler,preschool" data-availability="weekdays,weekends" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Little Skoolhouse @ Jurong West</h3>
+              <p class="resource-meta">Jurong &bull; Extended hours available</p>
+              <p class="resource-desc">
+                Full-day childcare with extended hours for working parents. Offers play-based curriculum and nutritious meals.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6792 3344
+                </div>
+                <a href="https://www.google.com/maps/search/Little+Skoolhouse+Jurong+West" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Food Aid -->
-          <article class="card resource-card" data-category="food" data-name="Food from the Heart - Clementi" data-location="Clementi">
-            <div class="resource-thumb">
-              <img src="https://images.unsplash.com/photo-1719937208565-ca8464388b43?auto=format&fit=crop&w=600&q=80" alt="Asian volunteers packing food items into bags" loading="lazy" />
-            </div>
+          <article class="resource-card" data-category="food" data-location="Clementi" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="free">
             <div class="resource-body">
+              <span class="resource-type">Food assistance</span>
               <h3>Food from the Heart - Clementi</h3>
-              <p class="resource-type">Food assistance</p>
               <p class="resource-meta">Clementi &bull; Monthly food packs</p>
               <p class="resource-desc">
                 Provides regular food support to families in need through community food packs and school-based programmes.
               </p>
-              <p class="resource-contact">
-                <strong>Contact:</strong> 6899 1234 &middot; <a href="#" aria-label="Visit Food from the Heart website (placeholder)">Website</a>
-              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6899 1234
+                </div>
+                <a href="https://www.google.com/maps/search/Food+from+the+Heart+Clementi" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="card resource-card" data-category="food" data-name="Free Food for All @ Bedok North" data-location="Bedok">
-            <div class="resource-thumb">
-              <img src="https://images.unsplash.com/photo-1514986888952-8cd320577b68?auto=format&fit=crop&w=600&q=80" alt="Asian family enjoying a meal together at a table" loading="lazy" />
-            </div>
+          <article class="resource-card" data-category="food" data-location="Bedok" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays,weekends" data-language="english,malay" data-cost="free">
             <div class="resource-body">
+              <span class="resource-type">Halal food support</span>
               <h3>Free Food for All @ Bedok North</h3>
-              <p class="resource-type">Halal food support</p>
               <p class="resource-meta">Bedok North &bull; Ready-to-eat meals</p>
               <p class="resource-desc">
                 Provides halal cooked meals and essential groceries to low-income families, including single-parent households.
               </p>
-              <p class="resource-contact">
-                <strong>Contact:</strong> 6122 3344 &middot; <a href="#" aria-label="Visit Free Food for All website (placeholder)">Website</a>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6122 3344
+                </div>
+                <a href="https://www.google.com/maps/search/Free+Food+for+All+Bedok" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+          
+           <article class="resource-card" data-category="food" data-location="Woodlands" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay,tamil" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Free meal distribution</span>
+              <h3>Willing Hearts @ Woodlands</h3>
+              <p class="resource-meta">Woodlands &bull; Daily meals</p>
+              <p class="resource-desc">
+                Daily cooked meals available for collection or delivery. Serves families in need with no-questions-asked support.
               </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6468 0605
+                </div>
+                <a href="https://www.google.com/maps/search/Willing+Hearts+Singapore" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="food" data-location="Sengkang" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays,weekends" data-language="english,mandarin" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Food assistance</span>
+              <h3>The Food Bank Singapore @ Sengkang</h3>
+              <p class="resource-meta">Sengkang &bull; Weekly groceries</p>
+              <p class="resource-desc">
+                Redistributes surplus food to families in need. Provides weekly grocery packs with essential items.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6250 0590
+                </div>
+                <a href="https://www.google.com/maps/search/The+Food+Bank+Singapore" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Counselling / FSC -->
-          <article class="card resource-card" data-category="counselling" data-name="Ang Mo Kio Family Service Centre" data-location="Ang Mo Kio">
-            <div class="resource-thumb">
-              <img src="https://images.unsplash.com/photo-1586769852044-692d6e3703c8?auto=format&fit=crop&w=600&q=80" alt="Asian mother speaking with a counsellor in an office" loading="lazy" />
-            </div>
+          <article class="resource-card" data-category="counselling" data-location="Ang Mo Kio" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
             <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
               <h3>Ang Mo Kio Family Service Centre</h3>
-              <p class="resource-type">Family Service Centre</p>
               <p class="resource-meta">Ang Mo Kio &bull; Casework &amp; counselling</p>
               <p class="resource-desc">
                 Offers counselling, financial assistance enquiries, and parenting support for individuals and families in the area.
               </p>
-              <p class="resource-contact">
-                <strong>Contact:</strong> 6452 1234 &middot; <a href="#" aria-label="Visit Ang Mo Kio Family Service Centre website (placeholder)">Website</a>
-              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6452 1234
+                </div>
+                <a href="https://www.google.com/maps/search/Ang+Mo+Kio+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="card resource-card" data-category="counselling" data-name="Fei Yue Counselling Centre @ Choa Chu Kang" data-location="Choa Chu Kang">
-            <div class="resource-thumb">
-              <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=600&q=80" alt="Asian couple talking with a counsellor in a calm room" loading="lazy" />
-            </div>
+          <article class="resource-card" data-category="counselling" data-location="Choa Chu Kang" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays,weekends" data-language="english,mandarin,malay" data-cost="subsidised">
             <div class="resource-body">
-              <h3>Fei Yue Counselling Centre @ Choa Chu Kang</h3>
-              <p class="resource-type">Counselling &amp; parenting support</p>
-              <p class="resource-meta">Choa Chu Kang &bull; Individual &amp; family sessions</p>
+              <span class="resource-type">Counselling &amp; parenting</span>
+              <h3>Fei Yue Counselling Centre</h3>
+              <p class="resource-meta">Choa Chu Kang &bull; Family sessions</p>
               <p class="resource-desc">
                 Provides counselling and parenting programmes, with experience supporting single-parent families and caregivers.
               </p>
-              <p class="resource-contact">
-                <strong>Contact:</strong> 6762 9293 &middot; <a href="#" aria-label="Visit Fei Yue website (placeholder)">Website</a>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6762 9293
+                </div>
+                <a href="https://www.google.com/maps/search/Fei+Yue+Counselling+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="resource-card" data-category="counselling" data-location="Hougang" data-age="infant,toddler,preschool,primary,secondary" data-availability="24-7" data-language="english,mandarin,malay,tamil" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">24/7 Crisis Hotline</span>
+              <h3>Samaritans of Singapore (SOS)</h3>
+              <p class="resource-meta">Islandwide &bull; Immediate support</p>
+              <p class="resource-desc">
+                24-hour emotional support hotline for anyone in crisis or distress. Trained counsellors available anytime.
               </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Hotline:</strong> 1767 (24/7)
+                </div>
+                <a href="https://www.google.com/maps/search/Samaritans+of+Singapore" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Pasir Ris" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Support Services</span>
+              <h3>Care Corner FSC @ Pasir Ris</h3>
+              <p class="resource-meta">Pasir Ris &bull; Counselling</p>
+              <p class="resource-desc">
+                Comprehensive family support including counselling, financial aid application assistance, and parenting workshops.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6583 3478
+                </div>
+                <a href="https://www.google.com/maps/search/Care+Corner+Family+Service+Centre+Pasir+Ris" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Healthcare -->
+          <article class="resource-card" data-category="healthcare" data-location="Bukit Batok" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Bukit Batok Polyclinic</h3>
+              <p class="resource-meta">Bukit Batok &bull; Subsidised care</p>
+              <p class="resource-desc">
+                Affordable healthcare for families. Accepts CHAS and Pioneer/Merdeka cards for additional subsidies.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6705 8900
+                </div>
+                <a href="https://www.google.com/maps/search/Bukit+Batok+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Punggol" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays,weekends" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Punggol Polyclinic</h3>
+              <p class="resource-meta">Punggol &bull; Family medicine</p>
+              <p class="resource-desc">
+                Comprehensive healthcare including child immunisation, health screening, and chronic disease management.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6312 3400
+                </div>
+                <a href="https://www.google.com/maps/search/Punggol+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Employment -->
+          <article class="resource-card" data-category="employment" data-location="Jurong" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay,tamil" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Career support &amp; training</span>
+              <h3>Workforce Singapore (WSG) @ Jurong</h3>
+              <p class="resource-meta">Jurong &bull; Job placement</p>
+              <p class="resource-desc">
+                Career coaching, job matching, and training programmes to help single parents find sustainable employment.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6883 5885
+                </div>
+                <a href="https://www.google.com/maps/search/Workforce+Singapore+Jurong" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="employment" data-location="Yishun" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays,weekends" data-language="english,mandarin" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Employment services</span>
+              <h3>NTUC e2i Career Centre @ Yishun</h3>
+              <p class="resource-meta">Yishun &bull; Job search support</p>
+              <p class="resource-desc">
+                Free career advisory, resume writing help, interview preparation, and job placement for all job seekers.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6474 0606
+                </div>
+                <a href="https://www.google.com/maps/search/e2i+Career+Centre+Yishun" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Additional Resources for All Locations -->
+          
+          <!-- Woodlands Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Woodlands" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>NTUC First Campus @ Woodlands</h3>
+              <p class="resource-meta">Woodlands &bull; Infant care &amp; childcare</p>
+              <p class="resource-desc">
+                Full-day childcare and infant care services with government subsidies available. Extended hours for working parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6362 5888
+                </div>
+                <a href="https://www.google.com/maps/search/NTUC+First+Campus+Woodlands" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Woodlands" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Woodlands Family Service Centre</h3>
+              <p class="resource-meta">Woodlands &bull; Counselling &amp; support</p>
+              <p class="resource-desc">
+                Casework, counselling, and financial assistance for families in Woodlands. Specialised support for single parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6368 2171
+                </div>
+                <a href="https://www.google.com/maps/search/Woodlands+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Choa Chu Kang Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Choa Chu Kang" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Kinderland @ Choa Chu Kang</h3>
+              <p class="resource-meta">Choa Chu Kang &bull; Preschool education</p>
+              <p class="resource-desc">
+                Quality preschool programme with subsidised fees. Bilingual curriculum and extended hours available.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6767 8455
+                </div>
+                <a href="https://www.google.com/maps/search/Kinderland+Choa+Chu+Kang" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Choa Chu Kang" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Choa Chu Kang Polyclinic</h3>
+              <p class="resource-meta">Choa Chu Kang &bull; Family medicine</p>
+              <p class="resource-desc">
+                Affordable healthcare services including child immunisation, health screening, and chronic disease management with CHAS subsidies.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6766 2211
+                </div>
+                <a href="https://www.google.com/maps/search/Choa+Chu+Kang+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bukit Batok Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Bukit Batok" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Little Footprints Preschool @ Bukit Batok</h3>
+              <p class="resource-meta">Bukit Batok &bull; Full-day childcare</p>
+              <p class="resource-desc">
+                Preschool with government subsidies. Offers quality early childhood education and care for working parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6566 5544
+                </div>
+                <a href="https://www.google.com/maps/search/Little+Footprints+Preschool+Bukit+Batok" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Bukit Batok" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Bukit Batok Family Service Centre</h3>
+              <p class="resource-meta">Bukit Batok &bull; Counselling services</p>
+              <p class="resource-desc">
+                Family support services including counselling, financial aid application assistance, and parenting programmes.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6561 1234
+                </div>
+                <a href="https://www.google.com/maps/search/Bukit+Batok+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hougang Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Hougang" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Cherie Hearts @ Hougang</h3>
+              <p class="resource-meta">Hougang &bull; Infant care &amp; preschool</p>
+              <p class="resource-desc">
+                Comprehensive early childhood care and education with subsidies. Flexible hours to accommodate working single parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6388 7788
+                </div>
+                <a href="https://www.google.com/maps/search/Cherie+Hearts+Hougang" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Hougang" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Hougang Polyclinic</h3>
+              <p class="resource-meta">Hougang &bull; Subsidised healthcare</p>
+              <p class="resource-desc">
+                Family medicine services with CHAS and other subsidies. Child health services and immunisation available.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6386 6222
+                </div>
+                <a href="https://www.google.com/maps/search/Hougang+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sengkang Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Sengkang" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Learning Vision @ Sengkang</h3>
+              <p class="resource-meta">Sengkang &bull; Preschool programme</p>
+              <p class="resource-desc">
+                Quality early childhood education with government subsidies. Extended hours and school holiday programmes available.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6316 7788
+                </div>
+                <a href="https://www.google.com/maps/search/Learning+Vision+Sengkang" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Sengkang" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Sengkang Family Service Centre</h3>
+              <p class="resource-meta">Sengkang &bull; Family support</p>
+              <p class="resource-desc">
+                Counselling, casework, and financial assistance for families. Specialised programmes for single-parent households.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6315 6789
+                </div>
+                <a href="https://www.google.com/maps/search/Sengkang+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Punggol Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Punggol" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Maple Bear @ Punggol</h3>
+              <p class="resource-meta">Punggol &bull; Bilingual preschool</p>
+              <p class="resource-desc">
+                Bilingual early childhood education with subsidies. Full-day programmes and extended hours for working parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6385 8899
+                </div>
+                <a href="https://www.google.com/maps/search/Maple+Bear+Preschool+Punggol" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="food" data-location="Punggol" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Food assistance</span>
+              <h3>Food Bank Singapore @ Punggol</h3>
+              <p class="resource-meta">Punggol &bull; Weekly food support</p>
+              <p class="resource-desc">
+                Weekly distribution of surplus food and essential groceries to families in need. No questions asked policy.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6250 0590
+                </div>
+                <a href="https://www.google.com/maps/search/Food+Bank+Singapore+Punggol" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pasir Ris Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Pasir Ris" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>MindChamps @ Pasir Ris</h3>
+              <p class="resource-meta">Pasir Ris &bull; Preschool education</p>
+              <p class="resource-desc">
+                Premium early childhood programme with government subsidies available. Holistic development approach for children.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6581 3344
+                </div>
+                <a href="https://www.google.com/maps/search/MindChamps+Pasir+Ris" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Pasir Ris" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Pasir Ris Polyclinic</h3>
+              <p class="resource-meta">Pasir Ris &bull; Family medicine</p>
+              <p class="resource-desc">
+                Comprehensive healthcare services with CHAS subsidies. Child health, immunisation, and chronic disease management.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6581 8877
+                </div>
+                <a href="https://www.google.com/maps/search/Pasir+Ris+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Yishun Resources -->
+          <article class="resource-card" data-category="childcare" data-location="Yishun" data-age="infant,toddler,preschool" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Childcare &amp; preschool</span>
+              <h3>Pat's Schoolhouse @ Yishun</h3>
+              <p class="resource-meta">Yishun &bull; Infant care &amp; preschool</p>
+              <p class="resource-desc">
+                Quality childcare services with subsidies. Extended hours and holiday programmes to support working parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6756 8899
+                </div>
+                <a href="https://www.google.com/maps/search/Pats+Schoolhouse+Yishun" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Yishun" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Yishun Family Service Centre</h3>
+              <p class="resource-meta">Yishun &bull; Counselling &amp; support</p>
+              <p class="resource-desc">
+                Family counselling, financial assistance, and parenting support programmes. Experienced in supporting single-parent families.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6756 2233
+                </div>
+                <a href="https://www.google.com/maps/search/Yishun+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Additional Resources for Existing Locations -->
+          <article class="resource-card" data-category="employment" data-location="Ang Mo Kio" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay,tamil" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Career services</span>
+              <h3>WSG Career Connect @ Ang Mo Kio</h3>
+              <p class="resource-meta">Ang Mo Kio &bull; Job placement</p>
+              <p class="resource-desc">
+                Free career coaching and job matching services. Training grants and skills upgrading programmes for job seekers.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6883 5885
+                </div>
+                <a href="https://www.google.com/maps/search/WSG+Career+Connect+Ang+Mo+Kio" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Ang Mo Kio" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Ang Mo Kio Polyclinic</h3>
+              <p class="resource-meta">Ang Mo Kio &bull; Family medicine</p>
+              <p class="resource-desc">
+                Affordable healthcare with CHAS subsidies. Child immunisation, health screening, and chronic disease care available.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6457 6100
+                </div>
+                <a href="https://www.google.com/maps/search/Ang+Mo+Kio+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="food" data-location="Ang Mo Kio" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Food assistance</span>
+              <h3>Will Food @ Ang Mo Kio</h3>
+              <p class="resource-meta">Ang Mo Kio &bull; Monthly food packs</p>
+              <p class="resource-desc">
+                Monthly distribution of essential food items to families in need. Includes fresh produce and dry goods.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6451 2345
+                </div>
+                <a href="https://www.google.com/maps/search/Food+assistance+Ang+Mo+Kio" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="employment" data-location="Bedok" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Career support</span>
+              <h3>e2i Career Centre @ Bedok</h3>
+              <p class="resource-meta">Bedok &bull; Job search support</p>
+              <p class="resource-desc">
+                Free job placement services, career counselling, and skills training programmes. Supports single parents returning to work.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6474 0606
+                </div>
+                <a href="https://www.google.com/maps/search/e2i+Career+Centre+Bedok" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Bedok" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Bedok Polyclinic</h3>
+              <p class="resource-meta">Bedok &bull; Family medicine</p>
+              <p class="resource-desc">
+                Comprehensive healthcare services with CHAS and other subsidies. Child health services and immunisation programmes.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6243 3100
+                </div>
+                <a href="https://www.google.com/maps/search/Bedok+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Bedok" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Bedok Family Service Centre</h3>
+              <p class="resource-meta">Bedok &bull; Family support</p>
+              <p class="resource-desc">
+                Counselling, casework, and financial assistance for families in Bedok. Specialised support for single-parent households.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6241 9876
+                </div>
+                <a href="https://www.google.com/maps/search/Bedok+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Tampines" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Tampines Family Service Centre</h3>
+              <p class="resource-meta">Tampines &bull; Counselling services</p>
+              <p class="resource-desc">
+                Family support services including counselling, financial aid application help, and parenting workshops.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6783 4567
+                </div>
+                <a href="https://www.google.com/maps/search/Tampines+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Tampines" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Tampines Polyclinic</h3>
+              <p class="resource-meta">Tampines &bull; Family medicine</p>
+              <p class="resource-desc">
+                Affordable healthcare services with CHAS subsidies. Comprehensive child health and immunisation services.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6782 3300
+                </div>
+                <a href="https://www.google.com/maps/search/Tampines+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="employment" data-location="Tampines" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="free">
+            <div class="resource-body">
+              <span class="resource-type">Career services</span>
+              <h3>NTUC e2i @ Tampines</h3>
+              <p class="resource-meta">Tampines &bull; Job placement</p>
+              <p class="resource-desc">
+                Career coaching, resume assistance, and job matching services. Flexible work opportunities for single parents.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6474 0606
+                </div>
+                <a href="https://www.google.com/maps/search/e2i+Tampines" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Jurong" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Jurong Family Service Centre</h3>
+              <p class="resource-meta">Jurong &bull; Family support</p>
+              <p class="resource-desc">
+                Comprehensive family services including counselling, casework, and financial assistance. Support for single-parent families.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6567 8899
+                </div>
+                <a href="https://www.google.com/maps/search/Jurong+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Jurong" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Jurong Polyclinic</h3>
+              <p class="resource-meta">Jurong &bull; Family medicine</p>
+              <p class="resource-desc">
+                Affordable healthcare with CHAS and other subsidies. Child health services, immunisation, and chronic disease management.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6563 4100
+                </div>
+                <a href="https://www.google.com/maps/search/Jurong+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="counselling" data-location="Clementi" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Family Service Centre</span>
+              <h3>Clementi Family Service Centre</h3>
+              <p class="resource-meta">Clementi &bull; Counselling &amp; support</p>
+              <p class="resource-desc">
+                Family counselling, financial assistance, and parenting support programmes. Experienced in supporting single-parent families.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6773 4455
+                </div>
+                <a href="https://www.google.com/maps/search/Clementi+Family+Service+Centre" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="resource-card" data-category="healthcare" data-location="Clementi" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay" data-cost="subsidised">
+            <div class="resource-body">
+              <span class="resource-type">Primary healthcare</span>
+              <h3>Clementi Polyclinic</h3>
+              <p class="resource-meta">Clementi &bull; Family medicine</p>
+              <p class="resource-desc">
+                Comprehensive healthcare services with CHAS subsidies. Child immunisation, health screening, and family medicine.
+              </p>
+              <div class="resource-actions">
+                <div class="resource-contact">
+                  <strong>Contact:</strong> 6777 8800
+                </div>
+                <a href="https://www.google.com/maps/search/Clementi+Polyclinic" target="_blank" class="resource-map-link">
+                  View on Map &rarr;
+                </a>
+              </div>
             </div>
           </article>
         </div>
 
-        <p class="resource-note">
-          This is a sample list. To find more, you can search for “Family Service Centre near me” or check <a href="https://www.msf.gov.sg" target="_blank" rel="noopener noreferrer">MSF’s website</a>.
-        </p>
+        <!-- Pagination Controls -->
+        <div class="pagination-container" id="pagination-controls">
+          <!-- Buttons will be injected by JS -->
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo-mark logo-mark-footer">SP</span>
-        <span class="footer-text">SingleParentSG — Independent information hub for single parents in Singapore.</span>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            <span>SingleParentSG</span>
+          </a>
+          <p>
+            Empowering single parents in Singapore with accessible information and community connections.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Menu</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="financial-aid.html">Financial Aid</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Emergency Hotlines</a></li>
+            <li><a href="resources.html">Family Service Centres</a></li>
+            <li><a href="resources.html">Childcare Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Agencies</h3>
+          <ul class="footer-links">
+            <li><a href="https://www.msf.gov.sg" target="_blank" rel="noopener">MSF Singapore</a></li>
+            <li><a href="https://www.ecda.gov.sg" target="_blank" rel="noopener">ECDA</a></li>
+            <li><a href="https://www.moe.gov.sg" target="_blank" rel="noopener">MOE Singapore</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="contact.html">Contact & Support</a>
-        <a href="financial-aid.html">Financial aid guides</a>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SingleParentSG. Not an official government site. Designed with care.</p>
       </div>
-      <p class="footer-disclaimer">
-        This is an informational prototype and is not an official government website. Please verify details with the relevant agencies.
-      </p>
     </div>
   </footer>
 
   <script src="../js/resources.js"></script>
 </body>
 </html>
-

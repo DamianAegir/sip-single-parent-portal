@@ -5,237 +5,482 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Financial Aid Guides | SingleParentSG</title>
   <meta name="description" content="Plain-language guides to ComCare, KidSTART, and Higher Education Community Bursary for single parents in Singapore." />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/financial-aid.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <span class="logo-mark">SP</span>
-        <span class="logo-text">SingleParentSG</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
       <nav class="site-nav" aria-label="Main">
         <ul class="nav-list">
           <li><a href="../index.html" class="nav-link">Home</a></li>
           <li><a href="financial-aid.html" class="nav-link nav-link-active">Financial Aid</a></li>
           <li><a href="resources.html" class="nav-link">Resources</a></li>
-          <li><a href="contact.html" class="nav-link">Contact & Support</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="page-hero">
-      <div class="container">
-        <p class="eyebrow">Financial support</p>
-        <h1>Financial Aid Guides</h1>
-        <p class="intro">
-          These guides turn complex scheme information into simple language for single parents in Singapore.
-          For full details, always check the official government websites linked in each card.
-        </p>
-      </div>
-    </section>
-
-    <section class="section checker-section" aria-labelledby="eligibility-heading">
-      <div class="container checker-grid">
-        <div>
-          <h2 id="eligibility-heading">Not sure where to start?</h2>
-          <p>
-            Answer a few quick questions and we will suggest a scheme that may be a good starting point. This is not an official assessment.
-          </p>
-        </div>
-        <form class="checker-form" id="eligibility-form">
-          <div class="form-group">
-            <label for="working-status">Are you currently working?</label>
-            <select id="working-status" name="working-status" required>
-              <option value="">Please choose</option>
-              <option value="not-working">No, I am not working</option>
-              <option value="part-time">Yes, part-time / irregular</option>
-              <option value="full-time">Yes, full-time</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="child-age">Do you have at least one child below 7 years old?</label>
-            <select id="child-age" name="child-age" required>
-              <option value="">Please choose</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="education-level">Are you supporting a child in secondary school, JC, or ITE/Poly?</label>
-            <select id="education-level" name="education-level" required>
-              <option value="">Please choose</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary">See suggested scheme</button>
-
-          <div class="result" id="eligibility-result" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section" style="padding-top: 4rem;">
       <div class="container">
         <header class="section-header">
-          <h2>Key schemes for single parents</h2>
-          <p>Below are simplified explanations. Tap “View official site” on each card to confirm the latest information.</p>
+          <span class="badge">Financial Support</span>
+          <h2>Financial Aid Guides</h2>
+          <p>
+            Find the right assistance for your family. Search by keyword or use our advanced filters to find schemes based on your specific situation.
+          </p>
         </header>
 
-        <div class="scheme-grid">
-          <article class="card scheme-card">
+        <!-- Search & Filter Controls -->
+        <div class="filter-controls">
+          <div class="search-bar-wrapper">
+            <input type="text" id="scheme-search" class="search-input" placeholder="Search schemes (e.g. 'childcare', 'housing')..." />
+            <button class="btn btn-primary search-btn">Search</button>
+          </div>
+          
+          <button id="toggle-advanced-filters" class="btn btn-secondary" aria-expanded="false" aria-controls="advanced-filters">
+            Show Advanced Filters
+          </button>
+        </div>
+
+        <!-- Advanced Filter Form (Hidden by default) -->
+        <div id="advanced-filters" class="advanced-filters-panel hidden">
+          <form id="filter-form" class="filter-form">
+            <div class="filter-grid">
+              <div class="form-group">
+                <label for="working-status">Employment Status</label>
+                <select id="working-status" name="working-status">
+                  <option value="">Any Status</option>
+                  <option value="not-working">Not Working</option>
+                  <option value="part-time">Part-time</option>
+                  <option value="full-time">Full-time</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="household-income">Monthly Income</label>
+                <select id="household-income" name="household-income">
+                  <option value="">Any Income</option>
+                  <option value="below-1000">Below $1,000</option>
+                  <option value="1000-2000">$1,000 - $2,000</option>
+                  <option value="2000-3000">$2,000 - $3,000</option>
+                  <option value="above-4500">Above $4,500</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="child-age">Child's Age</label>
+                <select id="child-age" name="child-age">
+                  <option value="">Any Age</option>
+                  <option value="infant">Infant (0-2 yrs)</option>
+                  <option value="preschool">Preschool (3-6 yrs)</option>
+                  <option value="primary">Primary (7-12 yrs)</option>
+                  <option value="secondary">Secondary (13-16 yrs)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="support-type">Support Type</label>
+                <select id="support-type" name="support-type">
+                  <option value="">All Types</option>
+                  <option value="daily-living">Daily Living</option>
+                  <option value="childcare">Childcare</option>
+                  <option value="education">Education</option>
+                  <option value="housing">Housing</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="skills">Skills & Employment</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="filter-actions">
+              <button type="submit" class="btn btn-primary">Apply Filters</button>
+              <button type="reset" id="clear-filters" class="btn btn-secondary">Clear Filters</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="filter-results" class="filter-results" aria-live="polite"></div>
+
+        <!-- Scheme Grid -->
+        <div class="scheme-grid" id="scheme-list">
+          <!-- Schemes (Existing Data Attributes Maintained) -->
+          <article class="scheme-card" data-working="not-working,part-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary,post-secondary" data-housing="rental,1-2room,3-4room" data-support="daily-living,housing" data-children="1,2,3-plus">
             <h3>ComCare Short-to-Medium Term Assistance</h3>
-            <p class="scheme-pill">Daily living support</p>
+            <span class="scheme-pill">Daily living support</span>
             <p class="scheme-summary">
               Monthly cash and other support to help with basic living expenses for low-income households.
             </p>
-
             <div class="scheme-detail">
-              <h4>Who it may help</h4>
-              <ul>
-                <li>Single parents who are unemployed or earning very low income.</li>
-                <li>Household has little or no savings and faces difficulty paying for daily needs.</li>
-                <li>Singapore Citizens or Permanent Residents living in Singapore.</li>
-              </ul>
-            </div>
-
-            <div class="scheme-detail">
-              <h4>What support can look like</h4>
-              <ul>
-                <li>Monthly cash for food and daily expenses.</li>
-                <li>Help with Service &amp; Conservancy Charges and utilities bills.</li>
-                <li>Assistance with rental for HDB flats.</li>
-              </ul>
-            </div>
-
-            <div class="scheme-detail checklist">
-              <h4>Simple application checklist</h4>
-              <ol>
-                <li>Prepare NRICs of all household members.</li>
-                <li>Collect recent payslips or income documents (if any).</li>
-                <li>Gather bank statements and HDB rental/loan documents.</li>
-                <li>Visit your nearest Social Service Office (SSO) or apply online via the official site.</li>
-              </ol>
-            </div>
-
-            <div class="scheme-links">
-              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View official site</a>
+              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
-          <article class="card scheme-card">
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool" data-housing="rental,1-2room,3-4room" data-support="childcare" data-children="1,2,3-plus">
             <h3>KidSTART</h3>
-            <p class="scheme-pill">Early childhood support</p>
+            <span class="scheme-pill">Early childhood support</span>
             <p class="scheme-summary">
               Support for lower-income families to give young children a strong start in health, learning, and development.
             </p>
-
             <div class="scheme-detail">
-              <h4>Who it may help</h4>
-              <ul>
-                <li>Pregnant mothers and families with children aged 0–6 years old.</li>
-                <li>Lower-income households, usually staying in rental flats or with lower per capita income.</li>
-                <li>Families who may need extra support with parenting and child development.</li>
-              </ul>
-            </div>
-
-            <div class="scheme-detail">
-              <h4>What support can look like</h4>
-              <ul>
-                <li>Home visits by professionals to support parenting and child development.</li>
-                <li>Priority access to quality preschools under KidSTART.</li>
-                <li>Support for health, nutrition, and social-emotional development.</li>
-              </ul>
-            </div>
-
-            <div class="scheme-detail checklist">
-              <h4>Simple application checklist</h4>
-              <ol>
-                <li>Speak to your hospital social worker or Family Service Centre social worker.</li>
-                <li>Prepare NRIC and birth certificates for your children.</li>
-                <li>Share more about your family situation with the officer or social worker.</li>
-                <li>Wait for follow-up from the KidSTART team on your eligibility.</li>
-              </ol>
-            </div>
-
-            <div class="scheme-links">
-              <a href="https://www.ecda.gov.sg/programmes/kidstart" target="_blank" rel="noopener noreferrer" class="card-link">View official site</a>
+              <a href="https://www.ecda.gov.sg/programmes/kidstart" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
-          <article class="card scheme-card">
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000,3000-4500" data-age="primary,secondary,post-secondary" data-housing="rental,1-2room,3-4room,5room-condo" data-support="education" data-children="1,2,3-plus">
             <h3>Higher Education Community Bursary</h3>
-            <p class="scheme-pill">Education bursary</p>
+            <span class="scheme-pill">Education bursary</span>
             <p class="scheme-summary">
               Financial help for students from lower- and middle-income households in JC, Millennia Institute, Polytechnics and ITE.
             </p>
-
             <div class="scheme-detail">
-              <h4>Who it may help</h4>
-              <ul>
-                <li>Singapore Citizen students in JC, MI, Polytechnics, or ITE.</li>
-                <li>Households with lower or middle income (based on gross household income or per capita income).</li>
-                <li>Single-parent families who need help paying for school fees and daily expenses.</li>
-              </ul>
+              <a href="https://www.moe.gov.sg/financial-matters/feebursary/he-bursary" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
+          </article>
 
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="childcare" data-children="1,2,3-plus">
+            <h3>Childcare Subsidies</h3>
+            <span class="scheme-pill">Childcare support</span>
+            <p class="scheme-summary">
+              Monthly subsidies to help lower-income families afford quality childcare and preschool for children aged 18 months to 6 years.
+            </p>
             <div class="scheme-detail">
-              <h4>What support can look like</h4>
-              <ul>
-                <li>Subsidies for tuition fees.</li>
-                <li>Yearly bursary for living expenses, textbooks, and transport.</li>
-              </ul>
+              <a href="https://www.ecda.gov.sg/parents/subsidies-financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
+          </article>
 
-            <div class="scheme-detail checklist">
-              <h4>Simple application checklist</h4>
-              <ol>
-                <li>Check with your child’s school or institution’s website for bursary details and forms.</li>
-                <li>Prepare NRICs, student card, and proof of household income.</li>
-                <li>Submit the bursary application online or through the school’s student portal.</li>
-                <li>Attend any interview if requested by the school.</li>
-              </ol>
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="primary,secondary" data-housing="rental,1-2room,3-4room" data-support="education" data-children="1,2,3-plus">
+            <h3>MOE Financial Assistance Scheme</h3>
+            <span class="scheme-pill">School support</span>
+            <p class="scheme-summary">
+              Comprehensive support for children in primary and secondary school, covering fees, meals, textbooks, and transport.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.moe.gov.sg/financial-matters/financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
+          </article>
 
-            <div class="scheme-links">
-              <a href="https://www.moe.gov.sg/financial-matters/feebursary/he-bursary" target="_blank" rel="noopener noreferrer" class="card-link">View official site</a>
+          <article class="scheme-card" data-working="not-working,part-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary,post-secondary" data-housing="rental,1-2room" data-support="housing" data-children="1,2,3-plus">
+            <h3>Public Rental Scheme</h3>
+            <span class="scheme-pill">Housing assistance</span>
+            <p class="scheme-summary">
+              Affordable rental flats for lower-income families who need temporary or longer-term housing support.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.hdb.gov.sg/residential/renting-a-flat/renting-from-hdb/public-rental-scheme" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000,3000-4500" data-age="infant,preschool,primary,secondary,post-secondary" data-housing="rental,1-2room,3-4room,5room-condo" data-support="healthcare" data-children="1,2,3-plus">
+            <h3>CHAS (Community Health Assist)</h3>
+            <span class="scheme-pill">Healthcare subsidy</span>
+            <p class="scheme-summary">
+              Subsidised medical and dental care at participating GP clinics and dental clinics for lower- and middle-income families.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.chas.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+          
+           <article class="scheme-card" data-working="not-working,part-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary,post-secondary" data-housing="rental,1-2room,3-4room" data-support="skills" data-children="1,2,3-plus">
+            <h3>Workfare Skills Support</h3>
+            <span class="scheme-pill">Skills training</span>
+            <p class="scheme-summary">
+              Course fee subsidies and training allowances to help lower-wage workers upgrade skills and improve employability.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.skillsfuture.gov.sg/wss" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary,post-secondary" data-housing="rental,1-2room,3-4room" data-support="daily-living" data-children="1,2,3-plus">
+            <h3>GST Voucher Scheme</h3>
+            <span class="scheme-pill">Living expenses</span>
+            <p class="scheme-summary">
+              Annual cash payouts, MediSave top-ups, and utility rebates to help lower- and middle-income families with daily expenses.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.gstvoucher.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <!-- New Schemes -->
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000" data-age="infant,preschool,primary" data-housing="rental,1-2room" data-support="daily-living" data-children="1,2,3-plus">
+            <h3>ComCare Long-Term Assistance</h3>
+            <span class="scheme-pill">Long-term support</span>
+            <p class="scheme-summary">
+              For those permanently unable to work due to old age, illness, or disability. Includes cash assistance and free medical treatment.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="daily-living" data-children="1,2,3-plus">
+            <h3>Workfare Income Supplement</h3>
+            <span class="scheme-pill">Income supplement</span>
+            <p class="scheme-summary">
+              Cash payments and CPF top-ups for lower-wage Singaporean workers to boost their income and retirement savings.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.workfare.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room" data-support="housing" data-children="1,2,3-plus">
+            <h3>HDB Public Rental Scheme</h3>
+            <span class="scheme-pill">Housing</span>
+            <p class="scheme-summary">
+              Heavily subsidised rental flats for Singaporean households with no other housing options and low income.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.hdb.gov.sg/residential/renting-a-flat/renting-from-hdb/public-rental-scheme" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="healthcare" data-children="1,2,3-plus">
+            <h3>MediFund</h3>
+            <span class="scheme-pill">Medical safety net</span>
+            <p class="scheme-summary">
+              A safety net for Singaporeans who face difficulties paying for their remaining medical bills after government subsidies.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.moh.gov.sg/healthcare-schemes-subsidies/medifund" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="primary,secondary" data-housing="rental,1-2room,3-4room" data-support="education" data-children="1,2,3-plus">
+            <h3>Edusave Merit Bursary</h3>
+            <span class="scheme-pill">Education bursary</span>
+            <p class="scheme-summary">
+              Annual cash bursaries for students from lower- and middle-income families who perform well academically.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.moe.gov.sg/financial-matters/edusave-scheme" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="primary" data-housing="rental,1-2room,3-4room" data-support="childcare" data-children="1,2,3-plus">
+            <h3>Student Care Fee Assistance</h3>
+            <span class="scheme-pill">After-school care</span>
+            <p class="scheme-summary">
+              Subsidies for student care centres (SCCs) to help lower-income families afford after-school care for primary school children.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.msf.gov.sg/policies/Children-and-Youth/Student-Care" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000,3000-4500" data-age="preschool" data-housing="rental,1-2room,3-4room" data-support="childcare" data-children="1,2,3-plus">
+            <h3>Kindergarten Fee Assistance Scheme (KiFAS)</h3>
+            <span class="scheme-pill">Kindergarten subsidy</span>
+            <p class="scheme-summary">
+              Fee subsidies for children enrolled in anchor operator and partner operator kindergartens from lower- and middle-income families.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.ecda.gov.sg/parents/subsidies-financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room" data-support="daily-living" data-children="1,2,3-plus">
+            <h3>ComCare Transitions Support</h3>
+            <span class="scheme-pill">Transitional support</span>
+            <p class="scheme-summary">
+              Short-term assistance for families facing temporary financial difficulties while they seek stable employment or recover from crisis.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="healthcare" data-children="1,2,3-plus">
+            <h3>MediShield Life</h3>
+            <span class="scheme-pill">Health insurance</span>
+            <p class="scheme-summary">
+              Basic health insurance for all Singaporeans with heavy subsidies for lower-income families. Covers large hospital bills.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.moh.gov.sg/healthcare-schemes-subsidies/medishield-life" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="housing" data-children="1,2,3-plus">
+            <h3>HDB Additional CPF Housing Grant</h3>
+            <span class="scheme-pill">Home purchase</span>
+            <p class="scheme-summary">
+              Additional grants for lower- and middle-income families buying their first HDB flat to reduce downpayment and loan amounts.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.hdb.gov.sg/residential/buying-a-flat/new/first-timer-applicants/grants-for-couples-families" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="skills" data-children="1,2,3-plus">
+            <h3>SkillsFuture Credit</h3>
+            <span class="scheme-pill">Lifelong learning</span>
+            <p class="scheme-summary">
+              Training credits for all Singaporeans aged 25 and above to upgrade skills. Additional credits for lower-income individuals.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.skillsfuture.gov.sg/credit" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="education" data-children="1,2,3-plus">
+            <h3>School Pocket Money Fund</h3>
+            <span class="scheme-pill">School allowance</span>
+            <p class="scheme-summary">
+              Monthly allowance for children from lower-income families to help with school-related expenses and daily needs.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.comchest.org.sg/programmes/school-pocket-money-fund" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="daily-living" data-children="1,2,3-plus">
+            <h3>CDAC Financial Assistance</h3>
+            <span class="scheme-pill">Community support</span>
+            <p class="scheme-summary">
+              Financial assistance from Chinese Development Assistance Council for low-income Chinese families, including education and living expenses support.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.cdac.org.sg/programmes/financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="education" data-children="1,2,3-plus">
+            <h3>Mendaki Tertiary Tuition Fee Subsidy</h3>
+            <span class="scheme-pill">Education subsidy</span>
+            <p class="scheme-summary">
+              Tuition fee subsidies for Malay/Muslim students in tertiary institutions from lower-income families.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.mendaki.org.sg/programmes/education/tertiary-education" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="daily-living" data-children="1,2,3-plus">
+            <h3>SINDA Financial Assistance Scheme</h3>
+            <span class="scheme-pill">Community support</span>
+            <p class="scheme-summary">
+              Financial support for Indian families in need, covering education expenses, daily living costs, and emergency assistance.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.sinda.org.sg/programmes/financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="healthcare" data-children="1,2,3-plus">
+            <h3>Pioneer Generation Package</h3>
+            <span class="scheme-pill">Healthcare & living</span>
+            <p class="scheme-summary">
+              Healthcare subsidies, MediSave top-ups, and other benefits for Singaporeans born in 1949 or earlier.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.pioneers.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="infant,preschool,primary,secondary" data-housing="rental,1-2room,3-4room" data-support="healthcare" data-children="1,2,3-plus">
+            <h3>Merdeka Generation Package</h3>
+            <span class="scheme-pill">Healthcare support</span>
+            <p class="scheme-summary">
+              Healthcare benefits, MediSave top-ups, and CHAS subsidies for Singaporeans born between 1950-1959.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.merdekageneration.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="scheme-card" data-working="not-working,part-time,full-time" data-income="below-1000,1000-2000,2000-3000" data-age="primary,secondary" data-housing="rental,1-2room,3-4room" data-support="education" data-children="1,2,3-plus">
+            <h3>MOE Opportunity Fund</h3>
+            <span class="scheme-pill">Education enrichment</span>
+            <p class="scheme-summary">
+              Financial support for students from lower-income families to participate in enrichment programmes, overseas trips, and CCAs.
+            </p>
+            <div class="scheme-detail">
+              <a href="https://www.moe.gov.sg/financial-matters/opportunity-fund" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
         </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-container" id="pagination-controls">
+          <!-- Buttons will be injected by JS -->
+        </div>
+
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo-mark logo-mark-footer">SP</span>
-        <span class="footer-text">SingleParentSG — Independent information hub for single parents in Singapore.</span>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            <span>SingleParentSG</span>
+          </a>
+          <p>
+            Empowering single parents in Singapore with accessible information and community connections.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Menu</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="financial-aid.html">Financial Aid</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Emergency Hotlines</a></li>
+            <li><a href="resources.html">Family Service Centres</a></li>
+            <li><a href="resources.html">Childcare Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Agencies</h3>
+          <ul class="footer-links">
+            <li><a href="https://www.msf.gov.sg" target="_blank" rel="noopener">MSF Singapore</a></li>
+            <li><a href="https://www.ecda.gov.sg" target="_blank" rel="noopener">ECDA</a></li>
+            <li><a href="https://www.moe.gov.sg" target="_blank" rel="noopener">MOE Singapore</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="contact.html">Contact & Support</a>
-        <a href="resources.html">Find resources</a>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SingleParentSG. Not an official government site. Designed with care.</p>
       </div>
-      <p class="footer-disclaimer">
-        This is an informational prototype and is not an official government website. Please verify details with the relevant agencies.
-      </p>
     </div>
   </footer>
 
   <script src="../js/financial-aid.js"></script>
 </body>
 </html>
-

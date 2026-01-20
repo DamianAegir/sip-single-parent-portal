@@ -4,29 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SingleParentSG | Support Made Simple</title>
-  <meta name="description" content="SingleParentSG is a simple, central guide to financial aid and caregiving resources for single parents in Singapore." />
+  <meta name="description" content="A simple, central guide to financial aid and caregiving resources for single parents in Singapore." />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
-        <span class="logo-mark">SP</span>
-        <span class="logo-text">SingleParentSG</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
       </a>
+      
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
       <nav class="site-nav" aria-label="Main">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link nav-link-active">Home</a></li>
           <li><a href="html/financial-aid.html" class="nav-link">Financial Aid</a></li>
           <li><a href="html/resources.html" class="nav-link">Resources</a></li>
-          <li><a href="html/contact.html" class="nav-link">Contact & Support</a></li>
+          <li><a href="html/contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -35,25 +42,21 @@
   <main id="main-content">
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="eyebrow">For single parents in Singapore</p>
-          <h1>Support Made Simple.</h1>
+        <div class="hero-text fade-in">
+          <span class="badge">For Single Parents in Singapore</span>
+          <h1>A helping hand for your journey.</h1>
           <p class="hero-subtitle">
-            Your one-stop guide to financial aid and caregiving resources in Singapore.
-            Clear language, practical steps, and support you can trust.
+            Navigating single parenthood can be overwhelming. We're here to help you find the financial aid, childcare, and community support you need simply and clearly.
           </p>
           <div class="hero-actions">
             <a href="html/financial-aid.html" class="btn btn-primary">Find Financial Aid</a>
             <a href="html/resources.html" class="btn btn-secondary">Locate Resources</a>
           </div>
-          <p class="hero-note">
-            No log-in, no jargon. Just what you need to know, in one place.
-          </p>
         </div>
-        <div class="hero-image-wrapper">
+        <div class="hero-image-wrapper fade-in">
           <img
-            src="https://images.unsplash.com/photo-1632167768960-1b5b0aeae36d?auto=format&fit=crop&w=900&q=80"
-            alt="Smiling Asian mother holding her child outdoors"
+            src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?auto=format&fit=crop&w=800&q=80"
+            alt="Parent holding child's hand walking in a park"
             class="hero-image"
             loading="lazy"
           />
@@ -61,104 +64,126 @@
       </div>
     </section>
 
-    <section class="section features">
+    <section class="features-section">
       <div class="container">
-        <header class="section-header">
-          <h2>What you can find here</h2>
-          <p>We turn complex information into simple steps so you can focus on what matters most – your family.</p>
-        </header>
+        <div class="section-header">
+          <h2>Clear pathways to support</h2>
+          <p>We've simplified the search for assistance so you can focus on what matters most, your family.</p>
+        </div>
+        
         <div class="feature-grid">
-          <article class="card feature-card fade-in">
+          <article class="feature-card">
+            <div class="feature-icon">💰</div>
             <h3>Financial Schemes</h3>
-            <p>
-              Easy-to-read summaries of key schemes like ComCare, KidSTART, and bursuries, written in plain language.
-            </p>
-            <ul class="card-list">
-              <li>Who it is for</li>
-              <li>How much support you may get</li>
-              <li>Step-by-step application guide</li>
-            </ul>
-            <a href="html/financial-aid.html" class="card-link">See financial aid guides</a>
+            <p>Simple guides to government assistance like ComCare, KidSTART, and education bursaries. No complex jargon.</p>
+            <a href="html/financial-aid.html" class="feature-link">View Guides &rarr;</a>
           </article>
 
-          <article class="card feature-card fade-in">
-            <h3>Caregiving Support</h3>
-            <p>
-              Find childcare, preschool, and parenting support programmes near you, with contact details at a glance.
-            </p>
-            <ul class="card-list">
-              <li>Childcare and preschools</li>
-              <li>Parenting programmes</li>
-              <li>Home-based support services</li>
-            </ul>
-            <a href="html/resources.html" class="card-link">Browse caregiving resources</a>
+          <article class="feature-card">
+            <div class="feature-icon">🏡</div>
+            <h3>Caregiving & Community</h3>
+            <p>Find trusted childcare centres, food support, and counselling services right in your neighbourhood.</p>
+            <a href="html/resources.html" class="feature-link">Browse Directory &rarr;</a>
           </article>
 
-          <article class="card feature-card fade-in">
-            <h3>Community Help</h3>
-            <p>
-              Connect with family service centres, counselling, and food support so you do not have to cope alone.
-            </p>
-            <ul class="card-list">
-              <li>Family Service Centres</li>
-              <li>Counselling hotlines</li>
-              <li>Food and daily essentials</li>
-            </ul>
-            <a href="html/resources.html#counselling" class="card-link">Find community support</a>
+          <article class="feature-card">
+            <div class="feature-icon">❤️</div>
+            <h3>Immediate Help</h3>
+            <p>Key contacts for emergency situations, emotional distress, and urgent family support when you need it most.</p>
+            <a href="html/contact.html" class="feature-link">Get Support &rarr;</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section how-it-works">
+    <section class="steps-section">
       <div class="container">
-        <header class="section-header">
-          <h2>How this site can help you</h2>
-        </header>
-        <ol class="steps-list">
-          <li class="step fade-in">
-            <span class="step-number">1</span>
-            <div class="step-body">
-              <h3>Understand your options</h3>
-              <p>Start with our simple explanations of government schemes and community programmes that support single parents.</p>
-            </div>
-          </li>
-          <li class="step fade-in">
-            <span class="step-number">2</span>
-            <div class="step-body">
-              <h3>Follow clear steps</h3>
-              <p>Use the checklist-style guides to prepare documents and apply for schemes without guessing.</p>
-            </div>
-          </li>
-          <li class="step fade-in">
-            <span class="step-number">3</span>
-            <div class="step-body">
-              <h3>Reach out for support</h3>
-              <p>Find nearby centres, hotlines, and community groups so you can get emotional and practical support.</p>
-            </div>
-          </li>
-        </ol>
+        <div class="section-header">
+          <h2>How we help you move forward</h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Clarify Options</h3>
+            <p>We translate complex government schemes into plain, easy-to-understand language so you know exactly what you're eligible for.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>Guided Steps</h3>
+            <p>Follow simple checklists to prepare documents and apply for schemes with confidence and less stress.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Connect Locally</h3>
+            <p>Discover support networks, family service centres, and resources right in your own community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>You don't have to do this alone</h2>
+          <p>There are resources available to help you build a secure future for your family. Start exploring them today.</p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="html/financial-aid.html" class="btn btn-secondary">Start with Financial Aid</a>
+            <a href="html/contact.html" class="btn btn-secondary" style="background: transparent; color: white; border-color: white;">Speak to Someone</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo-mark logo-mark-footer">SP</span>
-        <span class="footer-text">SingleParentSG — Independent information hub for single parents in Singapore.</span>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            <span>SingleParentSG</span>
+          </a>
+          <p>
+            Empowering single parents in Singapore with accessible information and community connections.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <ul class="footer-links">
+            <li><a href="html/financial-aid.html">Financial Aid</a></li>
+            <li><a href="html/resources.html">Resources Directory</a></li>
+            <li><a href="html/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="html/resources.html">Childcare</a></li>
+            <li><a href="html/resources.html">Food Support</a></li>
+            <li><a href="html/contact.html">Hotlines</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Agencies</h3>
+          <ul class="footer-links">
+            <li><a href="https://www.msf.gov.sg" target="_blank" rel="noopener">MSF Singapore</a></li>
+            <li><a href="https://www.ecda.gov.sg" target="_blank" rel="noopener">ECDA</a></li>
+            <li><a href="https://www.socialservice.gov.sg" target="_blank" rel="noopener">NCSS</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="html/contact.html">Contact & Support</a>
-        <a href="html/resources.html">Find resources</a>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SingleParentSG. Not an official government site. Designed with care.</p>
       </div>
-      <p class="footer-disclaimer">
-        This is an informational prototype and is not an official government website. Please verify details with the relevant agencies.
-      </p>
     </div>
   </footer>
 
   <script src="js/script.js"></script>
 </body>
 </html>
-
