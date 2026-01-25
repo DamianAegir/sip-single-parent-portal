@@ -1,0 +1,111 @@
+/* Vouchers redemption page */
+
+.vouchers-section {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+}
+
+.vouchers-credits-display {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.vouchers-credits-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--primary);
+}
+
+.vouchers-credits-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vouchers-credits-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.vouchers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.voucher-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.voucher-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.voucher-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.voucher-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 0 0 0.5rem;
+}
+
+.voucher-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.voucher-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+.voucher-cost {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.voucher-redeem-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+.voucher-redeem-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 479px) {
+  .vouchers-section {
+    padding-top: 2.5rem;
+  }
+
+  .vouchers-grid {
+    grid-template-columns: 1fr;
+  }
+}

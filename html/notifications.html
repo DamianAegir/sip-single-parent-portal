@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications | SingleParentSG</title>
+  <meta name="description" content="View your notifications and updates." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/notifications.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item-resources">
+            <div class="nav-resources-row">
+              <a href="resources.html" class="nav-link">Resources</a>
+              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
+            </div>
+            <ul class="nav-resources-dropdown">
+              <li><a href="resources.html">Resources</a></li>
+              <li><a href="financial-aid.html">Financial Aid</a></li>
+            </ul>
+          </li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li class="nav-item-village"><a href="village.html" class="nav-link">Village</a></li>
+        </ul>
+      </nav>
+      <div id="header-auth"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section notifications-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="badge">Notifications</span>
+          <h2>Your Updates</h2>
+          <p>Stay informed about your tasks, credits, and community activity.</p>
+        </header>
+
+        <div class="notifications-actions">
+          <button type="button" class="btn btn-secondary" id="mark-all-read-btn">Mark all as read</button>
+          <button type="button" class="btn btn-secondary" id="clear-all-btn">Clear all</button>
+        </div>
+
+        <div class="notifications-list" id="notifications-list" aria-live="polite">
+          <!-- Notifications rendered by JS -->
+        </div>
+
+        <div class="notifications-empty" id="notifications-empty" hidden>
+          <p>No notifications yet. You'll see updates here when you complete tasks, earn credits, or receive messages.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Nav (Mobile) -->
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="../index.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="resources.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">📋</span>
+      <span>Resources</span>
+    </a>
+    <a href="community.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">💬</span>
+      <span>Community</span>
+    </a>
+    <a href="village.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
+      <span>Village</span>
+    </a>
+    <a href="profile.html" class="bottom-nav-link" id="bottom-nav-profile">
+      <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/notifications-page.js"></script>
+</body>
+</html>

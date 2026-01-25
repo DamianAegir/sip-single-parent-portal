@@ -33,6 +33,22 @@
   }
 }
 
+/* Toggle Advanced Filters Button */
+.toggle-filters-btn {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 0.5rem;
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .toggle-filters-btn {
+    width: auto;
+    margin-top: 0;
+    align-self: flex-start;
+  }
+}
+
 .search-input {
   flex: 1;
   padding: 0.75rem 1.25rem;
@@ -211,9 +227,34 @@
 }
 
 /* Mobile Optimizations */
+@media (max-width: 767px) {
+  .filter-controls {
+    padding: 1.5rem;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .resource-grid {
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    padding: 1.5rem;
+  }
+
+  .advanced-filters-panel {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .filter-grid {
+    gap: 1.25rem;
+  }
+}
+
 @media (max-width: 479px) {
   .filter-controls {
-    padding: 1rem;
+    padding: 1.25rem;
   }
   
   .search-bar-wrapper {

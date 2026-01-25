@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SingleParentSG | Support Made Simple</title>
-  <meta name="description" content="A simple, central guide to financial aid and caregiving resources for single parents in Singapore." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F766E" />
+  <title>SingleParentSG | Support for Single Parents in Singapore</title>
+  <meta name="description" content="Resources, community discussions, task swap, and support for single parents in Singapore." />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-home">
   <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
 
   <header class="site-header">
@@ -21,153 +23,124 @@
         </svg>
         <span>SingleParentSG</span>
       </a>
-      
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item-resources">
+            <div class="nav-resources-row">
+              <a href="html/resources.html" class="nav-link">Resources</a>
+              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
+            </div>
+            <ul class="nav-resources-dropdown">
+              <li><a href="html/resources.html">Resources</a></li>
+              <li><a href="html/financial-aid.html">Financial Aid</a></li>
+            </ul>
+          </li>
+          <li><a href="html/community.html" class="nav-link">Community</a></li>
+          <li class="nav-item-village"><a href="html/village.html" class="nav-link">Village</a></li>
+        </ul>
+      </nav>
+      <div id="header-auth"></div>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
-      <nav class="site-nav" aria-label="Main">
-        <ul class="nav-list">
-          <li><a href="index.html" class="nav-link nav-link-active">Home</a></li>
-          <li><a href="html/financial-aid.html" class="nav-link">Financial Aid</a></li>
-          <li><a href="html/resources.html" class="nav-link">Resources</a></li>
-          <li><a href="html/contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text fade-in">
-          <span class="badge">For Single Parents in Singapore</span>
-          <h1>A helping hand for your journey.</h1>
-          <p class="hero-subtitle">
-            Navigating single parenthood can be overwhelming. We're here to help you find the financial aid, childcare, and community support you need simply and clearly.
-          </p>
-          <div class="hero-actions">
-            <a href="html/financial-aid.html" class="btn btn-primary">Find Financial Aid</a>
-            <a href="html/resources.html" class="btn btn-secondary">Locate Resources</a>
-          </div>
-        </div>
-        <div class="hero-image-wrapper fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?auto=format&fit=crop&w=800&q=80"
-            alt="Parent holding child's hand walking in a park"
-            class="hero-image"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
+    <div class="app-home">
+      <section class="app-welcome" aria-label="Welcome">
+        <span class="app-welcome-badge">For Single Parents in Singapore</span>
+        <h1>Your support, all in one place.</h1>
+        <p class="app-welcome-tagline">Find resources, join the community, swap tasks, and redeem Community Credits. You're not alone.</p>
+      </section>
 
-    <section class="features-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Clear pathways to support</h2>
-          <p>We've simplified the search for assistance so you can focus on what matters most, your family.</p>
+      <div class="app-container">
+        <p class="app-quick-label" id="quick-label">What you can do</p>
+        <div class="app-tiles" role="navigation" aria-labelledby="quick-label">
+          <a href="html/resources.html" class="app-tile fade-in">
+            <span class="app-tile-icon" aria-hidden="true">📋</span>
+            <span class="app-tile-title">Resources Directory</span>
+            <span class="app-tile-sub">Find childcare centres, food support, family service centres, and community services near you. Filter by location and get personalized results.</span>
+            <span class="app-tile-arrow" aria-hidden="true">›</span>
+          </a>
+          <a href="html/financial-aid.html" class="app-tile fade-in">
+            <span class="app-tile-icon" aria-hidden="true">💰</span>
+            <span class="app-tile-title">Financial Aid Guide</span>
+            <span class="app-tile-sub">Clear guides to ComCare, KidSTART, education bursaries, and other government schemes. Know what you're eligible for and how to apply.</span>
+            <span class="app-tile-arrow" aria-hidden="true">›</span>
+          </a>
+          <a href="html/community.html" class="app-tile fade-in">
+            <span class="app-tile-icon" aria-hidden="true">💬</span>
+            <span class="app-tile-title">The Huddle</span>
+            <span class="app-tile-sub">Safe, anonymous community discussions. Share experiences, ask for advice, celebrate wins. Create or join groups and chat with other parents.</span>
+            <span class="app-tile-arrow" aria-hidden="true">›</span>
+          </a>
+          <a href="html/village.html" class="app-tile fade-in">
+            <span class="app-tile-icon" aria-hidden="true">🤝</span>
+            <span class="app-tile-title">Village Board</span>
+            <span class="app-tile-sub">Post tasks you need help with or accept tasks from others. Earn Community Credits for helping and redeem them for vouchers.</span>
+            <span class="app-tile-arrow" aria-hidden="true">›</span>
+          </a>
+          <a href="html/notifications.html" class="app-tile fade-in">
+            <span class="app-tile-icon" aria-hidden="true">🔔</span>
+            <span class="app-tile-title">Notifications</span>
+            <span class="app-tile-sub">Stay informed about task acceptances, credits earned, vouchers redeemed, and community activity. All updates in one place.</span>
+            <span class="app-tile-arrow" aria-hidden="true">›</span>
+          </a>
+          <a href="html/login.html" class="app-tile fade-in" id="app-tile-profile">
+            <span class="app-tile-icon" aria-hidden="true">👤</span>
+            <span class="app-tile-title">Profile & Account</span>
+            <span class="app-tile-sub">Sign in to access Village, post tasks, join discussions, manage your Community Credits, and redeem vouchers. Sign up to get started.</span>
+            <span class="app-tile-arrow" aria-hidden="true">›</span>
+          </a>
         </div>
-        
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-icon">💰</div>
-            <h3>Financial Schemes</h3>
-            <p>Simple guides to government assistance like ComCare, KidSTART, and education bursaries. No complex jargon.</p>
-            <a href="html/financial-aid.html" class="feature-link">View Guides &rarr;</a>
-          </article>
 
-          <article class="feature-card">
-            <div class="feature-icon">🏡</div>
-            <h3>Caregiving & Community</h3>
-            <p>Find trusted childcare centres, food support, and counselling services right in your neighbourhood.</p>
-            <a href="html/resources.html" class="feature-link">Browse Directory &rarr;</a>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">❤️</div>
-            <h3>Immediate Help</h3>
-            <p>Key contacts for emergency situations, emotional distress, and urgent family support when you need it most.</p>
-            <a href="html/contact.html" class="feature-link">Get Support &rarr;</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="steps-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>How we help you move forward</h2>
-        </div>
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">01</div>
-            <h3>Clarify Options</h3>
-            <p>We translate complex government schemes into plain, easy-to-understand language so you know exactly what you're eligible for.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">02</div>
-            <h3>Guided Steps</h3>
-            <p>Follow simple checklists to prepare documents and apply for schemes with confidence and less stress.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">03</div>
-            <h3>Connect Locally</h3>
-            <p>Discover support networks, family service centres, and resources right in your own community.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-box">
+        <section class="app-cta">
           <h2>You don't have to do this alone</h2>
-          <p>There are resources available to help you build a secure future for your family. Start exploring them today.</p>
-          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="html/financial-aid.html" class="btn btn-secondary">Start with Financial Aid</a>
-            <a href="html/contact.html" class="btn btn-secondary" style="background: transparent; color: white; border-color: white;">Speak to Someone</a>
+          <p>Connect with resources, join a supportive community, swap tasks with other parents, and redeem Community Credits for government-backed vouchers. Start your journey today.</p>
+          <div class="app-cta-actions cta-actions">
+            <a href="html/login.html" class="btn btn-primary">Sign in</a>
+            <a href="html/register.html" class="btn btn-secondary">Sign up</a>
+            <a href="html/contact.html" class="btn btn-secondary">Contact & hotlines</a>
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo">
+          <a href="index.html" class="logo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
             </svg>
             <span>SingleParentSG</span>
           </a>
-          <p>
-            Empowering single parents in Singapore with accessible information and community connections.
-          </p>
+          <p>Empowering single parents in Singapore with accessible information and community connections.</p>
         </div>
-
         <div class="footer-col">
-          <h3>Explore</h3>
+          <h3>App</h3>
           <ul class="footer-links">
+            <li><a href="html/resources.html">Resources</a></li>
             <li><a href="html/financial-aid.html">Financial Aid</a></li>
-            <li><a href="html/resources.html">Resources Directory</a></li>
-            <li><a href="html/contact.html">Contact Us</a></li>
+            <li><a href="html/community.html">Community</a></li>
+            <li><a href="html/village.html">Village</a></li>
+            <li><a href="html/notifications.html">Notifications</a></li>
+            <li><a href="html/profile.html">Profile</a></li>
+            <li><a href="html/contact.html">Contact</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h3>Resources</h3>
+          <h3>Support</h3>
           <ul class="footer-links">
-            <li><a href="html/resources.html">Childcare</a></li>
-            <li><a href="html/resources.html">Food Support</a></li>
-            <li><a href="html/contact.html">Hotlines</a></li>
+            <li><a href="html/contact.html">Emergency hotlines</a></li>
+            <li><a href="html/resources.html">Family service centres</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
           <h3>Agencies</h3>
           <ul class="footer-links">
@@ -177,13 +150,39 @@
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
         <p>&copy; 2026 SingleParentSG. Not an official government site. Designed with care.</p>
       </div>
     </div>
   </footer>
 
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="index.html" class="bottom-nav-link bottom-nav-link-active">
+      <span class="bottom-nav-icon" aria-hidden="true">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="html/resources.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">📋</span>
+      <span>Resources</span>
+    </a>
+    <a href="html/community.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">💬</span>
+      <span>Community</span>
+    </a>
+    <a href="html/village.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
+      <span>Village</span>
+    </a>
+    <a href="html/profile.html" class="bottom-nav-link" id="bottom-nav-profile">
+      <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="js/auth.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/header.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

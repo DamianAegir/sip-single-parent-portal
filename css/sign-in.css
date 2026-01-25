@@ -1,0 +1,107 @@
+/* Sign-in page – Calm & Clarity */
+
+.sign-in-section {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+}
+
+.sign-in-container {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.sign-in-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.sign-in-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.sign-in-form input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sign-in-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.sign-in-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.sign-in-error {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #FEF2F2;
+  color: #B91C1C;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+}
+
+.sign-in-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  min-height: 48px;
+  font-size: 1.05rem;
+}
+
+.sign-in-demo {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: var(--bg-alt);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.sign-in-demo p {
+  margin: 0 0 0.5rem;
+}
+
+.sign-in-demo p:last-child {
+  margin-bottom: 0;
+}
+
+.sign-in-demo code {
+  background: var(--bg-surface);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.sign-in-demo-name {
+  margin-top: 0.75rem !important;
+  color: var(--text-main);
+}
+
+.sign-in-back {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+@media (max-width: 479px) {
+  .sign-in-section {
+    padding-top: 2.5rem;
+  }
+
+  .sign-in-form input {
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+  }
+}

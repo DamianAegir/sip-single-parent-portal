@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Village Board | SingleParentSG</title>
+  <meta name="description" content="Swap tasks and skills with other parents. Request help or offer what you can." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/village.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item-resources">
+            <div class="nav-resources-row">
+              <a href="resources.html" class="nav-link">Resources</a>
+              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
+            </div>
+            <ul class="nav-resources-dropdown">
+              <li><a href="resources.html">Resources</a></li>
+              <li><a href="financial-aid.html">Financial Aid</a></li>
+            </ul>
+          </li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li class="nav-item-village"><a href="village.html" class="nav-link nav-link-active">Village</a></li>
+        </ul>
+      </nav>
+      <div id="header-auth"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section village-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="badge">Village Board</span>
+          <h2>Task Exchange</h2>
+          <p>
+            Post tasks you need help with or accept tasks from others. Earn Community Credits and redeem them on your profile.
+          </p>
+        </header>
+
+        <div class="village-actions-bar" id="village-actions-bar">
+          <button type="button" class="btn btn-primary village-post-btn" id="village-post-btn">
+            + Post a Task
+          </button>
+        </div>
+
+        <div class="village-filters">
+          <div class="village-search-wrap">
+            <label for="village-search" class="sr-only">Search tasks</label>
+            <input type="search" id="village-search" class="village-search" placeholder="Search tasks (e.g. grocery, school, errand)…" />
+          </div>
+          <div class="village-filters-row">
+            <div class="village-location-wrap">
+              <label for="village-location">Location</label>
+              <select id="village-location" class="village-location" aria-label="Filter by location">
+                <option value="">All locations</option>
+                <option value="Ang Mo Kio">Ang Mo Kio</option>
+                <option value="Bedok">Bedok</option>
+                <option value="Bishan">Bishan</option>
+                <option value="Bukit Batok">Bukit Batok</option>
+                <option value="Choa Chu Kang">Choa Chu Kang</option>
+                <option value="Clementi">Clementi</option>
+                <option value="Hougang">Hougang</option>
+                <option value="Jurong">Jurong</option>
+                <option value="Jurong East">Jurong East</option>
+                <option value="Pasir Ris">Pasir Ris</option>
+                <option value="Punggol">Punggol</option>
+                <option value="Sengkang">Sengkang</option>
+                <option value="Tampines">Tampines</option>
+                <option value="Woodlands">Woodlands</option>
+                <option value="Yishun">Yishun</option>
+              </select>
+            </div>
+            <div class="village-advanced-wrap">
+              <button type="button" class="btn btn-secondary village-advanced-toggle" id="village-advanced-toggle" aria-expanded="false" aria-controls="village-advanced-panel">
+                Advanced filters
+              </button>
+            </div>
+          </div>
+          <div class="village-advanced-panel hidden" id="village-advanced-panel" role="region" aria-label="Advanced filters">
+              <div class="village-advanced-grid">
+                <div class="form-group">
+                  <label for="village-min-credits">Min credits</label>
+                  <input type="number" id="village-min-credits" class="village-min-credits" min="0" max="100" placeholder="0" />
+                </div>
+                <div class="form-group">
+                  <label for="village-max-credits">Max credits</label>
+                  <input type="number" id="village-max-credits" class="village-max-credits" min="0" max="100" placeholder="100" />
+                </div>
+                <div class="form-group">
+                  <label for="village-show">Show</label>
+                  <select id="village-show" class="village-show" aria-label="Filter by task source">
+                    <option value="all">All tasks</option>
+                    <option value="mine">My tasks</option>
+                    <option value="others">Others’ tasks</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Task List -->
+        <div class="village-task-list" id="village-task-list" aria-live="polite">
+          <!-- Task cards rendered by JS -->
+        </div>
+
+        <!-- Post Task Modal -->
+        <div class="village-modal" id="village-modal" hidden>
+          <div class="village-modal-content">
+            <div class="village-modal-header">
+              <h3>Post a Task</h3>
+              <button type="button" class="village-modal-close" id="village-modal-close" aria-label="Close">×</button>
+            </div>
+            <form id="village-post-form" class="village-post-form">
+              <div class="form-group">
+                <label for="post-task-title">Task Title</label>
+                <input type="text" id="post-task-title" name="title" required placeholder="e.g. Need someone to pick up groceries" />
+              </div>
+              <div class="form-group">
+                <label for="post-task-description">Description</label>
+                <textarea id="post-task-description" name="description" rows="3" required placeholder="Provide more details about the task..."></textarea>
+              </div>
+              <div class="form-group">
+                <label for="post-task-location">Location</label>
+                <select id="post-task-location" name="location" required>
+                  <option value="">Select location</option>
+                  <option value="Ang Mo Kio">Ang Mo Kio</option>
+                  <option value="Bedok">Bedok</option>
+                  <option value="Bishan">Bishan</option>
+                  <option value="Bukit Batok">Bukit Batok</option>
+                  <option value="Choa Chu Kang">Choa Chu Kang</option>
+                  <option value="Clementi">Clementi</option>
+                  <option value="Hougang">Hougang</option>
+                  <option value="Jurong">Jurong</option>
+                  <option value="Jurong East">Jurong East</option>
+                  <option value="Pasir Ris">Pasir Ris</option>
+                  <option value="Punggol">Punggol</option>
+                  <option value="Sengkang">Sengkang</option>
+                  <option value="Tampines">Tampines</option>
+                  <option value="Woodlands">Woodlands</option>
+                  <option value="Yishun">Yishun</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="post-task-points">Credits to Offer</label>
+                <input type="number" id="post-task-points" name="points" min="5" max="100" required placeholder="10" />
+                <small>Minimum 5 credits. You'll pay this when someone accepts your task.</small>
+              </div>
+              <div class="village-modal-actions">
+                <button type="button" class="btn btn-secondary" id="village-modal-cancel">Cancel</button>
+                <button type="submit" class="btn btn-primary">Post Task</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Nav (Mobile) -->
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="../index.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="resources.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">📋</span>
+      <span>Resources</span>
+    </a>
+    <a href="community.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">💬</span>
+      <span>Community</span>
+    </a>
+    <a href="village.html" class="bottom-nav-link bottom-nav-link-active">
+      <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
+      <span>Village</span>
+    </a>
+    <a href="profile.html" class="bottom-nav-link" id="bottom-nav-profile">
+      <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            <span>SingleParentSG</span>
+          </a>
+          <p>
+            Empowering single parents in Singapore with accessible information and community connections.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Menu</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="financial-aid.html">Financial Aid</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="village.html">Village</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Emergency Hotlines</a></li>
+            <li><a href="resources.html">Family Service Centres</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Agencies</h3>
+          <ul class="footer-links">
+            <li><a href="https://www.msf.gov.sg" target="_blank" rel="noopener">MSF Singapore</a></li>
+            <li><a href="https://www.ecda.gov.sg" target="_blank" rel="noopener">ECDA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SingleParentSG. Not an official government site. Designed with care.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/village.js"></script>
+</body>
+</html>

@@ -107,13 +107,13 @@ p { margin-bottom: 1.5rem; }
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 1rem; /* Smaller padding on mobile */
+  padding: 0 1.25rem; /* Increased mobile padding for less cramped feel */
 }
 
 /* Extra small mobile adjustments */
 @media (max-width: 374px) {
   .container {
-    padding: 0 0.75rem;
+    padding: 0 1rem; /* Still comfortable on very small screens */
   }
   
   h1 { font-size: 1.75rem; }
@@ -201,10 +201,66 @@ p { margin-bottom: 1.5rem; }
 
 .header-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   width: 100%;
   position: relative;
+}
+
+.header-inner .logo {
+  flex-shrink: 0;
+}
+
+.header-inner .site-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.header-inner #header-auth {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.header-inner .nav-toggle {
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    height: 60px;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .header-inner {
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+
+  .header-inner .site-nav {
+    display: none;
+  }
+
+  .header-inner .nav-toggle {
+    margin-left: auto;
+    padding: 0.5rem;
+  }
+
+  .header-inner .logo {
+    font-size: 1rem;
+  }
+
+  .header-inner .logo svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-inner #header-auth {
+    display: none;
+  }
 }
 
 .logo {
@@ -297,9 +353,15 @@ p { margin-bottom: 1.5rem; }
   justify-content: center;
   align-items: center;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-  position: relative; /* Ensure position doesn't change */
-  flex-shrink: 0; /* Prevent shrinking */
-  margin-left: auto; /* Push to right side */
+  position: relative;
+  flex-shrink: 0;
+  order: 3; /* After nav and auth */
+}
+
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
 }
 
 .nav-toggle span {
@@ -308,6 +370,256 @@ p { margin-bottom: 1.5rem; }
   background-color: var(--text-main);
   border-radius: 2px;
   transition: 0.3s;
+}
+
+/* Village link – hidden until logged in */
+.nav-item-village {
+  display: none;
+}
+
+body.logged-in .nav-item-village {
+  display: list-item;
+}
+
+/* Resources dropdown (Financial Aid submenu) */
+.nav-item-resources {
+  position: relative;
+}
+
+.nav-resources-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-resources-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 0.85em;
+}
+
+.nav-resources-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  margin-top: 0.25rem;
+  padding: 0.5rem 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  z-index: 100;
+}
+
+.nav-resources-dropdown.open {
+  display: block;
+}
+
+.nav-resources-dropdown a {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.nav-resources-dropdown a:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.nav-resources-dropdown a.nav-link-active {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .nav-resources-dropdown {
+    position: static;
+    margin-top: 0;
+    box-shadow: none;
+    border: none;
+    background: var(--bg-alt);
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* Header auth (Sign in / User menu) */
+#header-auth {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+  order: 2; /* After nav, before toggle */
+}
+
+.header-auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-sign-in,
+.header-sign-up {
+  padding: 0.5rem 1rem;
+  min-height: 40px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 479px) {
+  .header-auth-buttons {
+    gap: 0.35rem;
+  }
+
+  .header-sign-in,
+  .header-sign-up {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Hide header Login/Sign up on mobile; use Profile in bottom nav instead */
+@media (max-width: 767px) {
+  #header-auth {
+    display: none !important;
+  }
+}
+
+.auth-user-wrapper {
+  position: relative;
+}
+
+.auth-user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  min-height: 44px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.auth-user-trigger:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.auth-avatar {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.auth-avatar-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.auth-user-name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 479px) {
+  .auth-user-name { display: none; }
+}
+
+.auth-user-chevron {
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+
+.auth-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 160px;
+  margin-top: 0.25rem;
+  padding: 0.5rem 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1001;
+}
+
+.auth-dropdown[hidden] {
+  display: none !important;
+}
+
+.auth-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auth-dropdown-item:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.notification-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 10px;
+  line-height: 1;
+}
+
+.notification-badge[hidden] {
+  display: none !important;
 }
 
 /* Mobile Nav */
@@ -678,6 +990,13 @@ main {
   }
 }
 
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .cta-box .btn-secondary {
   border-color: white;
   background: white;
@@ -700,9 +1019,9 @@ main {
   flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
-@media (max-width: 479px) {
+@media (max-width: 767px) {
   .site-footer {
-    padding: 3rem 0 1.5rem;
+    display: none; /* Hide footer on mobile - bottom nav provides navigation */
   }
 }
 
@@ -800,6 +1119,179 @@ main {
 
 .fade-in {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Bottom Nav – Sticky at bottom on mobile for thumb access */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg-surface);
+  border-top: 2px solid var(--border);
+  padding: 0.5rem;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 767px) {
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+}
+
+.bottom-nav-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.65rem 0.4rem;
+  min-height: 56px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+#bottom-nav-profile {
+  display: none; /* Hidden on desktop when logged out; shown on mobile always, or when logged in */
+}
+
+@media (max-width: 767px) {
+  #bottom-nav-profile {
+    display: flex !important; /* Always show Profile on mobile (links to login or profile) */
+  }
+
+  /* Hide Home on mobile - show only 4 items (Resources, Community, Village, Profile) */
+  .bottom-nav .bottom-nav-link:first-child {
+    display: none !important;
+  }
+
+  /* Four-item bottom nav - better spacing */
+  .bottom-nav .bottom-nav-link {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+    min-height: 56px;
+  }
+
+  .bottom-nav .bottom-nav-icon {
+    font-size: 1.35rem;
+  }
+}
+
+/* Hide bottom nav on chat page */
+body:has(.chat-main) .bottom-nav {
+  display: none !important;
+}
+
+.bottom-nav-link:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.bottom-nav-link-active {
+  color: var(--primary-dark);
+  background: var(--primary-light);
+}
+
+.bottom-nav-link-active:hover {
+  color: var(--primary-dark);
+  background: var(--primary-light);
+}
+
+.bottom-nav-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+/* Extra main padding and footer spacing when bottom nav is present (mobile) */
+@media (max-width: 767px) {
+  body:has(.bottom-nav) main {
+    padding-bottom: 5.5rem;
+  }
+
+  body:has(.bottom-nav) .site-footer {
+    margin-bottom: 5.5rem;
+  }
+
+  /* Mobile spacing improvements - less cramped, more modern */
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header p {
+    margin-bottom: 0;
+  }
+
+  /* Increased gaps for cards and grids */
+  .feature-grid,
+  .resource-grid,
+  .huddle-feed,
+  .village-task-list {
+    gap: 1.5rem;
+  }
+
+  /* More padding in cards */
+  .feature-card,
+  .resource-card,
+  .huddle-post,
+  .village-task-card {
+    padding: 1.5rem;
+  }
+
+  /* Better spacing for buttons and actions */
+  .hero-actions,
+  .cta-actions,
+  .notifications-actions,
+  .village-actions-bar,
+  .huddle-actions-bar {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Form spacing */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Search and filter spacing */
+  .huddle-search-wrap,
+  .village-search-wrap,
+  .village-filters {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Tab spacing */
+  .huddle-tabs,
+  .village-tabs {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Modal padding */
+  .village-modal-content,
+  .huddle-modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
 }
 
 /* Responsive Overrides (Additional) */

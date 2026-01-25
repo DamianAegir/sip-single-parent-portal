@@ -22,19 +22,28 @@
         </svg>
         <span>SingleParentSG</span>
       </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item-resources">
+            <div class="nav-resources-row">
+              <a href="resources.html" class="nav-link nav-link-active">Resources</a>
+              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
+            </div>
+            <ul class="nav-resources-dropdown">
+              <li><a href="resources.html" class="nav-link-active">Resources</a></li>
+              <li><a href="financial-aid.html">Financial Aid</a></li>
+            </ul>
+          </li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li class="nav-item-village"><a href="village.html" class="nav-link">Village</a></li>
+        </ul>
+      </nav>
+      <div id="header-auth"></div>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav class="site-nav" aria-label="Main">
-        <ul class="nav-list">
-          <li><a href="../index.html" class="nav-link">Home</a></li>
-          <li><a href="financial-aid.html" class="nav-link">Financial Aid</a></li>
-          <li><a href="resources.html" class="nav-link nav-link-active">Resources</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
@@ -59,7 +68,7 @@
             </button>
           </div>
           
-          <button id="toggle-advanced-filters" class="btn btn-secondary" aria-expanded="false" aria-controls="advanced-filters" style="margin-top: 1rem;">
+          <button id="toggle-advanced-filters" class="btn btn-secondary toggle-filters-btn" aria-expanded="false" aria-controls="advanced-filters">
             Show Advanced Filters
           </button>
         </div>
@@ -67,64 +76,66 @@
         <!-- Advanced Filter Form (Hidden by default) -->
         <div id="advanced-filters" class="advanced-filters-panel hidden">
           <form id="resource-filter-form" class="filter-form">
-            <div class="filter-grid">
-              <div class="form-group">
+          <div class="filter-grid">
+            <div class="form-group">
                 <label for="resource-type">Service Type</label>
-                <select id="resource-type" name="resource-type">
+              <select id="resource-type" name="resource-type">
                   <option value="">All Services</option>
-                  <option value="childcare">Childcare & Preschool</option>
-                  <option value="food">Food Assistance</option>
+                <option value="childcare">Childcare & Preschool</option>
+                <option value="food">Food Assistance</option>
                   <option value="counselling">Counselling</option>
                   <option value="healthcare">Healthcare</option>
                   <option value="employment">Employment</option>
-                </select>
-              </div>
+              </select>
+            </div>
 
-              <div class="form-group">
+            <div class="form-group">
                 <label for="location-filter">Location</label>
-                <select id="location-filter" name="location-filter">
+              <select id="location-filter" name="location-filter">
                   <option value="">All Locations</option>
-                  <option value="Ang Mo Kio">Ang Mo Kio</option>
-                  <option value="Bedok">Bedok</option>
-                  <option value="Bukit Batok">Bukit Batok</option>
-                  <option value="Choa Chu Kang">Choa Chu Kang</option>
-                  <option value="Clementi">Clementi</option>
-                  <option value="Hougang">Hougang</option>
-                  <option value="Jurong">Jurong</option>
-                  <option value="Pasir Ris">Pasir Ris</option>
-                  <option value="Punggol">Punggol</option>
-                  <option value="Sengkang">Sengkang</option>
-                  <option value="Tampines">Tampines</option>
-                  <option value="Woodlands">Woodlands</option>
-                  <option value="Yishun">Yishun</option>
-                </select>
-              </div>
+                <option value="Ang Mo Kio">Ang Mo Kio</option>
+                <option value="Bedok">Bedok</option>
+                <option value="Bukit Batok">Bukit Batok</option>
+                <option value="Choa Chu Kang">Choa Chu Kang</option>
+                <option value="Clementi">Clementi</option>
+                <option value="Hougang">Hougang</option>
+                <option value="Jurong">Jurong</option>
+                <option value="Jurong East">Jurong East</option>
+                <option value="Punggol">Punggol</option>
+                <option value="Pasir Ris">Pasir Ris</option>
+                <option value="Punggol">Punggol</option>
+                <option value="Sengkang">Sengkang</option>
+                <option value="Tampines">Tampines</option>
+                <option value="Woodlands">Woodlands</option>
+                <option value="Yishun">Yishun</option>
+              </select>
+            </div>
 
-              <div class="form-group">
+            <div class="form-group">
                 <label for="availability-filter">Availability</label>
-                <select id="availability-filter" name="availability-filter">
+              <select id="availability-filter" name="availability-filter">
                   <option value="">Any Time</option>
-                  <option value="weekdays">Weekdays</option>
-                  <option value="weekends">Weekends</option>
+                <option value="weekdays">Weekdays</option>
+                <option value="weekends">Weekends</option>
                   <option value="24-7">24/7</option>
-                </select>
-              </div>
+              </select>
+            </div>
 
-              <div class="form-group">
+            <div class="form-group">
                 <label for="cost-filter">Cost</label>
-                <select id="cost-filter" name="cost-filter">
+              <select id="cost-filter" name="cost-filter">
                   <option value="">Any Cost</option>
                   <option value="free">Free</option>
                   <option value="subsidised">Subsidised</option>
-                </select>
-              </div>
+              </select>
             </div>
+          </div>
 
-            <div class="filter-actions">
-              <button type="submit" class="btn btn-primary">Apply Filters</button>
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
               <button type="reset" id="clear-resource-filters" class="btn btn-secondary">Clear Filters</button>
-            </div>
-          </form>
+          </div>
+        </form>
         </div>
 
         <div id="resource-filter-results" class="filter-results" aria-live="polite"></div>
@@ -245,7 +256,7 @@
               </div>
             </div>
           </article>
-          
+
            <article class="resource-card" data-category="food" data-location="Woodlands" data-age="infant,toddler,preschool,primary,secondary" data-availability="weekdays" data-language="english,mandarin,malay,tamil" data-cost="free">
             <div class="resource-body">
               <span class="resource-type">Free meal distribution</span>
@@ -322,7 +333,7 @@
               </div>
             </div>
           </article>
-          
+
           <article class="resource-card" data-category="counselling" data-location="Hougang" data-age="infant,toddler,preschool,primary,secondary" data-availability="24-7" data-language="english,mandarin,malay,tamil" data-cost="free">
             <div class="resource-body">
               <span class="resource-type">24/7 Crisis Hotline</span>
@@ -1027,30 +1038,32 @@
 
         <div class="footer-col">
           <h3>Menu</h3>
-          <ul class="footer-links">
-            <li><a href="../index.html">Home</a></li>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
             <li><a href="financial-aid.html">Financial Aid</a></li>
             <li><a href="resources.html">Resources</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="village.html">Village</a></li>
             <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
         <div class="footer-col">
           <h3>Support</h3>
-          <ul class="footer-links">
+            <ul class="footer-links">
             <li><a href="contact.html">Emergency Hotlines</a></li>
             <li><a href="resources.html">Family Service Centres</a></li>
             <li><a href="resources.html">Childcare Services</a></li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
         <div class="footer-col">
           <h3>Agencies</h3>
-          <ul class="footer-links">
+            <ul class="footer-links">
             <li><a href="https://www.msf.gov.sg" target="_blank" rel="noopener">MSF Singapore</a></li>
             <li><a href="https://www.ecda.gov.sg" target="_blank" rel="noopener">ECDA</a></li>
             <li><a href="https://www.moe.gov.sg" target="_blank" rel="noopener">MOE Singapore</a></li>
-          </ul>
+            </ul>
         </div>
       </div>
 
@@ -1060,6 +1073,33 @@
     </div>
   </footer>
 
+  <!-- Bottom Nav (Mobile) -->
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="../index.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="resources.html" class="bottom-nav-link bottom-nav-link-active">
+      <span class="bottom-nav-icon" aria-hidden="true">📋</span>
+      <span>Resources</span>
+    </a>
+    <a href="community.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">💬</span>
+      <span>Community</span>
+    </a>
+    <a href="village.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
+      <span>Village</span>
+    </a>
+    <a href="profile.html" class="bottom-nav-link" id="bottom-nav-profile">
+      <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/header.js"></script>
   <script src="../js/resources.js"></script>
 </body>
 </html>

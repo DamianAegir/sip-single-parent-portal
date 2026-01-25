@@ -1,27 +1,5 @@
 // Interactions for Contact & Support page
-
-// Mobile navigation toggle
-const navToggleContact = document.querySelector(".nav-toggle");
-const navContact = document.querySelector(".site-nav");
-
-if (navToggleContact && navContact) {
-  navToggleContact.addEventListener("click", () => {
-    const isOpen = navContact.classList.toggle("open");
-    navToggleContact.setAttribute("aria-expanded", String(isOpen));
-  });
-}
-
-if (navContact) {
-  navContact.addEventListener("click", (event) => {
-    const target = event.target;
-    if (target && target.classList && target.classList.contains("nav-link")) {
-      navContact.classList.remove("open");
-      if (navToggleContact) {
-        navToggleContact.setAttribute("aria-expanded", "false");
-      }
-    }
-  });
-}
+// Nav toggle is handled by header.js
 
 // Simple client-side form validation
 const contactForm = document.getElementById("contact-form");

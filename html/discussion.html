@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discussion | SingleParentSG</title>
+  <meta name="description" content="View discussion details and join the conversation." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/discussion.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item-resources">
+            <div class="nav-resources-row">
+              <a href="resources.html" class="nav-link">Resources</a>
+              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
+            </div>
+            <ul class="nav-resources-dropdown">
+              <li><a href="resources.html">Resources</a></li>
+              <li><a href="financial-aid.html">Financial Aid</a></li>
+            </ul>
+          </li>
+          <li><a href="community.html" class="nav-link nav-link-active">Community</a></li>
+          <li class="nav-item-village"><a href="village.html" class="nav-link">Village</a></li>
+        </ul>
+      </nav>
+      <div id="header-auth"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section discussion-profile-section">
+      <div class="container discussion-profile-container">
+        <p class="discussion-back"><a href="community.html">&larr; Back to Community</a></p>
+
+        <div class="discussion-profile-card" id="discussion-profile-card">
+          <div class="discussion-profile-header">
+            <div class="discussion-avatar-large" id="discussion-avatar">💬</div>
+            <div class="discussion-header-text">
+              <span class="discussion-category" id="discussion-category">—</span>
+              <h2 class="discussion-title" id="discussion-title">—</h2>
+            </div>
+          </div>
+
+          <div class="discussion-info-section">
+            <h3 class="discussion-info-title">About</h3>
+            <p class="discussion-description" id="discussion-description">—</p>
+          </div>
+
+          <div class="discussion-info-section">
+            <h3 class="discussion-info-title">Group info</h3>
+            <div class="discussion-info-list">
+              <div class="discussion-info-item">
+                <span class="discussion-info-label">Members</span>
+                <span class="discussion-info-value" id="discussion-member-count">—</span>
+              </div>
+              <div class="discussion-info-item">
+                <span class="discussion-info-label">Category</span>
+                <span class="discussion-info-value" id="discussion-category-value">—</span>
+              </div>
+              <div class="discussion-info-item">
+                <span class="discussion-info-label">Created</span>
+                <span class="discussion-info-value" id="discussion-created">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="discussion-join-area" id="discussion-join-area">
+            <p class="discussion-join-prompt">Join this discussion to read and send messages in the group.</p>
+            <div class="discussion-join-btn-wrap">
+              <a href="#" class="btn btn-primary discussion-join-btn" id="discussion-join-btn">Join discussion</a>
+            </div>
+          </div>
+
+          <div class="discussion-joined-actions" id="discussion-joined-actions" hidden>
+            <p>You’ve joined this discussion.</p>
+            <div class="discussion-join-btn-wrap">
+              <a href="#" class="btn btn-primary" id="discussion-open-chat">Join group</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p><a href="contact.html">Contact</a> &nbsp;·&nbsp; &copy; 2026 SingleParentSG. Not an official government site.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/discussions-data.js"></script>
+  <script src="../js/discussion.js"></script>
+</body>
+</html>

@@ -2,16 +2,7 @@
 
 // Wait for DOM to be fully loaded before accessing elements
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile navigation toggle
-  const navToggle = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".site-nav");
-
-  if (navToggle && nav) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-  }
+  // Nav toggle is handled by header.js
 
   // Advanced Filters Toggle
   const toggleFiltersBtn = document.getElementById("toggle-advanced-filters");
@@ -51,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Clementi": { lat: 1.3162, lon: 103.7649 },
     "Hougang": { lat: 1.3612, lon: 103.8863 },
     "Jurong": { lat: 1.3329, lon: 103.7436 },
+    "Jurong East": { lat: 1.3333, lon: 103.7424 },
     "Pasir Ris": { lat: 1.3721, lon: 103.9474 },
     "Punggol": { lat: 1.4052, lon: 103.9024 },
     "Sengkang": { lat: 1.3868, lon: 103.8914 },
@@ -97,7 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       
       if (!navigator.geolocation) {
-        alert("Geolocation is not supported by your browser.");
+        var notif = typeof TrellisNotifications !== 'undefined' ? TrellisNotifications : null;
+        if (notif && notif.add) {
+          notif.add('warning', 'Location Not Supported', 'Geolocation is not supported by your browser.');
+        }
         return;
       }
 
@@ -146,7 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             errorMsg += "Please check your browser settings.";
           }
-          alert(errorMsg);
+          var notif = typeof TrellisNotifications !== 'undefined' ? TrellisNotifications : null;
+          if (notif && notif.add) {
+            notif.add('error', 'Location Error', errorMsg);
+          }
           useLocationBtn.textContent = "📍 Use My Location";
           useLocationBtn.disabled = false;
         }
@@ -168,7 +166,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (paginationContainer) {
       paginationContainer.style.display = "none";
     }
-    // Initially show all cards
+    // Pre-fill location from profile when logged in
+    var auth = typeof TrellisAuth !== "undefined" ? TrellisAuth : null;
+    if (auth && auth.isLoggedIn && auth.isLoggedIn() && locationSelect) {
+      var user = auth.getCurrentUser && auth.getCurrentUser();
+      var loc = user && user.location ? user.location : "";
+      if (loc) {
+        locationSelect.value = loc;
+        if (advancedFiltersPanel && advancedFiltersPanel.classList.contains("hidden")) {
+          advancedFiltersPanel.classList.remove("hidden");
+          if (toggleFiltersBtn) {
+            toggleFiltersBtn.textContent = "Hide Advanced Filters";
+            toggleFiltersBtn.setAttribute("aria-expanded", "true");
+          }
+        }
+      }
+    }
     filterResources();
   }
 

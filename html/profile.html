@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact & Support | SingleParentSG</title>
-  <meta name="description" content="Reach out for support and find key emergency hotlines for single parents in Singapore." />
+  <title>Profile | SingleParentSG</title>
+  <meta name="description" content="Your SingleParentSG profile." />
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/contact.css" />
+  <link rel="stylesheet" href="../css/profile.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,82 +48,48 @@
   </header>
 
   <main id="main-content">
-    <section class="section" style="padding-top: 4rem;">
-      <div class="container">
+    <section class="section profile-section">
+      <div class="container profile-container">
         <header class="section-header">
-          <span class="badge">We're Here For You</span>
-          <h2>Contact & Support</h2>
-          <p>
-            Whether you need immediate help or just someone to talk to, support is available.
-          </p>
+          <span class="badge">Your profile</span>
+          <h2>Profile</h2>
+          <p>Manage your account and preferences.</p>
         </header>
 
-        <div class="contact-grid">
-          <!-- Emergency Hotlines -->
-          <div class="hotlines-section">
-            <h3>Emergency & Immediate Support</h3>
-            <p>If you or your child is in danger, call emergency services immediately.</p>
-            
-            <ul class="hotline-list">
-              <li class="hotline-card emergency">
-                <h4>Police / Ambulance</h4>
-                <a href="tel:999" class="hotline-number">999</a> / <a href="tel:995" class="hotline-number">995</a>
-                <p>For life-threatening emergencies and crimes.</p>
-              </li>
-              
-              <li class="hotline-card">
-                <h4>Samaritans of Singapore (SOS)</h4>
-                <a href="tel:1767" class="hotline-number">1-767</a>
-                <p>24/7 emotional support for distress or suicidal thoughts.</p>
-              </li>
-              
-              <li class="hotline-card">
-                <h4>National Care Hotline</h4>
-                <a href="tel:18002026868" class="hotline-number">1800-202-6868</a>
-                <p>Emotional support during difficult times (8am - 12am).</p>
-              </li>
-
-              <li class="hotline-card">
-                <h4>ComCare Call</h4>
-                <a href="tel:18002220000" class="hotline-number">1800-222-0000</a>
-                <p>For financial assistance enquiries (Mon-Fri, 8.30am-5pm).</p>
-              </li>
-
-              <li class="hotline-card">
-                <h4>AWARE Women's Helpline</h4>
-                <a href="tel:18007775555" class="hotline-number">1800-777-5555</a>
-                <p>Support for women facing crisis or violence (Mon-Fri, 10am-6pm).</p>
-              </li>
-            </ul>
+        <div class="profile-card" id="profile-card">
+          <div class="profile-avatar-wrap" id="profile-avatar-wrap"></div>
+          <h3 class="profile-name" id="profile-name">—</h3>
+          <p class="profile-username" id="profile-username">—</p>
+          
+          <div class="profile-points-badge" id="profile-points-badge">
+            <span class="profile-points-label">Community Credits</span>
+            <span class="profile-points-value" id="profile-points-value">50</span>
           </div>
 
-          <!-- Contact Form -->
-          <div class="form-section">
-            <h3>Send us a message</h3>
-            <p>For general enquiries about this website or to suggest a resource.</p>
-            
-            <form id="contact-form" class="contact-form" novalidate>
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required />
-                <p class="error-message" id="name-error"></p>
+          <div class="profile-info-section">
+            <h4 class="profile-info-title">Personal Information</h4>
+            <div class="profile-info-list">
+              <div class="profile-info-item">
+                <span class="profile-info-label">Age</span>
+                <span class="profile-info-value" id="profile-age">—</span>
               </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
-                <p class="error-message" id="email-error"></p>
+              <div class="profile-info-item">
+                <span class="profile-info-label">Occupation</span>
+                <span class="profile-info-value" id="profile-occupation">—</span>
               </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <p class="error-message" id="message-error"></p>
+              <div class="profile-info-item">
+                <span class="profile-info-label">Children</span>
+                <span class="profile-info-value" id="profile-children">—</span>
               </div>
+              <div class="profile-info-item">
+                <span class="profile-info-label">Location</span>
+                <span class="profile-info-value" id="profile-location">—</span>
+              </div>
+            </div>
+          </div>
 
-              <button type="submit" class="btn btn-primary">Send Message</button>
-              <p class="form-success" id="form-success" aria-live="polite"></p>
-            </form>
+          <div class="profile-actions">
+            <a href="vouchers.html" class="btn btn-primary">Redeem Vouchers</a>
           </div>
         </div>
       </div>
@@ -140,11 +106,8 @@
             </svg>
             <span>SingleParentSG</span>
           </a>
-          <p>
-            Empowering single parents in Singapore with accessible information and community connections.
-          </p>
+          <p>Empowering single parents in Singapore with accessible information and community connections.</p>
         </div>
-
         <div class="footer-col">
           <h3>Menu</h3>
           <ul class="footer-links">
@@ -156,26 +119,14 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
           <h3>Support</h3>
           <ul class="footer-links">
             <li><a href="contact.html">Emergency Hotlines</a></li>
             <li><a href="resources.html">Family Service Centres</a></li>
-            <li><a href="resources.html">Childcare Services</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>Agencies</h3>
-          <ul class="footer-links">
-            <li><a href="https://www.msf.gov.sg" target="_blank" rel="noopener">MSF Singapore</a></li>
-            <li><a href="https://www.ecda.gov.sg" target="_blank" rel="noopener">ECDA</a></li>
-            <li><a href="https://www.moe.gov.sg" target="_blank" rel="noopener">MOE Singapore</a></li>
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
         <p>&copy; 2026 SingleParentSG. Not an official government site. Designed with care.</p>
       </div>
@@ -200,14 +151,15 @@
       <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
       <span>Village</span>
     </a>
-    <a href="profile.html" class="bottom-nav-link" id="bottom-nav-profile">
+    <a href="profile.html" class="bottom-nav-link bottom-nav-link-active" id="bottom-nav-profile">
       <span class="bottom-nav-icon" aria-hidden="true">👤</span>
       <span>Profile</span>
     </a>
   </nav>
 
   <script src="../js/auth.js"></script>
+  <script src="../js/notifications.js"></script>
   <script src="../js/header.js"></script>
-  <script src="../js/contact.js"></script>
+  <script src="../js/profile.js"></script>
 </body>
 </html>

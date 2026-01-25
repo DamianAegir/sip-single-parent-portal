@@ -22,19 +22,28 @@
         </svg>
         <span>SingleParentSG</span>
       </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item-resources">
+            <div class="nav-resources-row">
+              <a href="resources.html" class="nav-link">Resources</a>
+              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
+            </div>
+            <ul class="nav-resources-dropdown">
+              <li><a href="resources.html">Resources</a></li>
+              <li><a href="financial-aid.html" class="nav-link-active">Financial Aid</a></li>
+            </ul>
+          </li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li class="nav-item-village"><a href="village.html" class="nav-link">Village</a></li>
+        </ul>
+      </nav>
+      <div id="header-auth"></div>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav class="site-nav" aria-label="Main">
-        <ul class="nav-list">
-          <li><a href="../index.html" class="nav-link">Home</a></li>
-          <li><a href="financial-aid.html" class="nav-link nav-link-active">Financial Aid</a></li>
-          <li><a href="resources.html" class="nav-link">Resources</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
@@ -109,6 +118,28 @@
                   <option value="skills">Skills & Employment</option>
                 </select>
               </div>
+
+              <div class="form-group">
+                <label for="location-filter">Location</label>
+                <select id="location-filter" name="location-filter">
+                  <option value="">All Locations</option>
+                  <option value="Ang Mo Kio">Ang Mo Kio</option>
+                  <option value="Bedok">Bedok</option>
+                  <option value="Bukit Batok">Bukit Batok</option>
+                  <option value="Choa Chu Kang">Choa Chu Kang</option>
+                  <option value="Clementi">Clementi</option>
+                  <option value="Hougang">Hougang</option>
+                  <option value="Jurong">Jurong</option>
+                  <option value="Jurong East">Jurong East</option>
+                  <option value="Punggol">Punggol</option>
+                  <option value="Pasir Ris">Pasir Ris</option>
+                  <option value="Punggol">Punggol</option>
+                  <option value="Sengkang">Sengkang</option>
+                  <option value="Tampines">Tampines</option>
+                  <option value="Woodlands">Woodlands</option>
+                  <option value="Yishun">Yishun</option>
+                </select>
+              </div>
             </div>
 
             <div class="filter-actions">
@@ -130,7 +161,7 @@
               Monthly cash and other support to help with basic living expenses for low-income households.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.msf.gov.sg/what-we-do/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -141,7 +172,7 @@
               Support for lower-income families to give young children a strong start in health, learning, and development.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.ecda.gov.sg/programmes/kidstart" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.ecda.gov.sg/parents/other-services/kidstart" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -152,7 +183,7 @@
               Financial help for students from lower- and middle-income households in JC, Millennia Institute, Polytechnics and ITE.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.moe.gov.sg/financial-matters/feebursary/he-bursary" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.moe.gov.sg/financial-matters/financial-assistance/financial-assistance-information-for-pseis" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -196,7 +227,7 @@
               Subsidised medical and dental care at participating GP clinics and dental clinics for lower- and middle-income families.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.chas.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.chas.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
           
@@ -207,7 +238,7 @@
               Course fee subsidies and training allowances to help lower-wage workers upgrade skills and improve employability.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.skillsfuture.gov.sg/wss" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.wsg.gov.sg/home/individuals/attachment-placement-programmes/workfare-skills-support-scheme" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -218,7 +249,7 @@
               Annual cash payouts, MediSave top-ups, and utility rebates to help lower- and middle-income families with daily expenses.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.gstvoucher.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.govbenefits.gov.sg/about-us/gst-voucher/overview" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -230,7 +261,7 @@
               For those permanently unable to work due to old age, illness, or disability. Includes cash assistance and free medical treatment.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.msf.gov.sg/what-we-do/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -241,7 +272,7 @@
               Cash payments and CPF top-ups for lower-wage Singaporean workers to boost their income and retirement savings.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.workfare.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.cpf.gov.sg/member/growing-your-savings/government-support/workfare-income-supplement" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -285,7 +316,7 @@
               Subsidies for student care centres (SCCs) to help lower-income families afford after-school care for primary school children.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.msf.gov.sg/policies/Children-and-Youth/Student-Care" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.msf.gov.sg/what-we-do/student-care/for-parents/student-care-fee-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -307,7 +338,7 @@
               Short-term assistance for families facing temporary financial difficulties while they seek stable employment or recover from crisis.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.msf.gov.sg/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.msf.gov.sg/what-we-do/comcare" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -340,7 +371,7 @@
               Training credits for all Singaporeans aged 25 and above to upgrade skills. Additional credits for lower-income individuals.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.skillsfuture.gov.sg/credit" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.myskillsfuture.gov.sg/content/portal/en/initiatives/initiatives.html" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -351,7 +382,7 @@
               Monthly allowance for children from lower-income families to help with school-related expenses and daily needs.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.comchest.org.sg/programmes/school-pocket-money-fund" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.spmf.org.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -362,7 +393,7 @@
               Financial assistance from Chinese Development Assistance Council for low-income Chinese families, including education and living expenses support.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.cdac.org.sg/programmes/financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.cdac.org.sg/cdac-family-assistance-programme" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -373,7 +404,7 @@
               Tuition fee subsidies for Malay/Muslim students in tertiary institutions from lower-income families.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.mendaki.org.sg/programmes/education/tertiary-education" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.mendaki.org.sg/assistance_landing/mendaki-scholarship-university" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -384,7 +415,7 @@
               Financial support for Indian families in need, covering education expenses, daily living costs, and emergency assistance.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.sinda.org.sg/programmes/financial-assistance" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.sinda.org.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -395,7 +426,7 @@
               Healthcare subsidies, MediSave top-ups, and other benefits for Singaporeans born in 1949 or earlier.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.pioneers.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.moh.gov.sg/managing-expenses/schemes-and-subsidies/pioneer-generation-package" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -406,7 +437,7 @@
               Healthcare benefits, MediSave top-ups, and CHAS subsidies for Singaporeans born between 1950-1959.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.merdekageneration.gov.sg" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.moh.gov.sg/managing-expenses/schemes-and-subsidies/merdeka-generation-package" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
 
@@ -417,7 +448,7 @@
               Financial support for students from lower-income families to participate in enrichment programmes, overseas trips, and CCAs.
             </p>
             <div class="scheme-detail">
-              <a href="https://www.moe.gov.sg/financial-matters/opportunity-fund" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
+              <a href="https://www.moe.gov.sg/about-us/organisation-structure/fpd/education-fund" target="_blank" rel="noopener noreferrer" class="card-link">View details &rarr;</a>
             </div>
           </article>
         </div>
@@ -452,6 +483,8 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="financial-aid.html">Financial Aid</a></li>
             <li><a href="resources.html">Resources</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="village.html">Village</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -481,6 +514,32 @@
     </div>
   </footer>
 
+  <!-- Bottom Nav (Mobile) -->
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="../index.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="resources.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">📋</span>
+      <span>Resources</span>
+    </a>
+    <a href="community.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">💬</span>
+      <span>Community</span>
+    </a>
+    <a href="village.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
+      <span>Village</span>
+    </a>
+    <a href="profile.html" class="bottom-nav-link" id="bottom-nav-profile">
+      <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/header.js"></script>
   <script src="../js/financial-aid.js"></script>
 </body>
 </html>

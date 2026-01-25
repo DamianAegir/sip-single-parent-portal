@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | SingleParentSG</title>
+  <meta name="description" content="Create your SingleParentSG account and help us understand your needs." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="../css/register.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="sr-only" href="#main-content" style="position:absolute; opacity:0; pointer-events:none;">Skip to main content</a>
+
+  <header class="site-header auth-page-header">
+    <div class="container header-inner auth-header-inner">
+      <a href="../index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span>SingleParentSG</span>
+      </a>
+      <a href="login.html" class="btn btn-secondary auth-back">Back to login</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section register-section">
+      <div class="container register-container">
+        <header class="section-header">
+          <span class="badge">Join us</span>
+          <h2>Create your account</h2>
+          <p>Help us understand your needs so we can provide better support.</p>
+        </header>
+
+        <form id="register-form" class="register-form" novalidate>
+          <div class="form-section">
+            <h3 class="form-section-title">Account Information</h3>
+            
+            <div class="form-group">
+              <label for="register-username">Username</label>
+              <input type="text" id="register-username" name="username" autocomplete="username" required placeholder="Choose a username" />
+            </div>
+            
+            <div class="form-group">
+              <label for="register-display-name">Display Name</label>
+              <input type="text" id="register-display-name" name="displayName" autocomplete="name" required placeholder="Your name" />
+            </div>
+            
+            <div class="form-group">
+              <label for="register-password">Password</label>
+              <input type="password" id="register-password" name="password" autocomplete="new-password" required placeholder="Create a password" />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="form-section-title">Personal Information</h3>
+            
+            <div class="form-group">
+              <label for="register-age">Age</label>
+              <input type="number" id="register-age" name="age" min="18" max="100" required placeholder="Your age" />
+            </div>
+            
+            <div class="form-group">
+              <label for="register-occupation">Occupation</label>
+              <input type="text" id="register-occupation" name="occupation" required placeholder="e.g. Cleaner, Teacher, etc." />
+            </div>
+            
+            <div class="form-group">
+              <label for="register-location">Location</label>
+              <select id="register-location" name="location" required>
+                <option value="">Select your area</option>
+                <option value="Ang Mo Kio">Ang Mo Kio</option>
+                <option value="Bedok">Bedok</option>
+                <option value="Bukit Batok">Bukit Batok</option>
+                <option value="Choa Chu Kang">Choa Chu Kang</option>
+                <option value="Clementi">Clementi</option>
+                <option value="Hougang">Hougang</option>
+                <option value="Jurong">Jurong</option>
+                <option value="Jurong East">Jurong East</option>
+                <option value="Pasir Ris">Pasir Ris</option>
+                <option value="Punggol">Punggol</option>
+                <option value="Sengkang">Sengkang</option>
+                <option value="Tampines">Tampines</option>
+                <option value="Woodlands">Woodlands</option>
+                <option value="Yishun">Yishun</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-children">Number of Children</label>
+              <input type="number" id="register-children" name="children" min="1" max="10" required placeholder="How many children?" />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="form-section-title">Your Challenges & Needs</h3>
+            
+            <div class="form-group">
+              <label>What are your main challenges? (Select all that apply)</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="challenges" value="financial" />
+                  <span>Financial difficulties</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="challenges" value="childcare" />
+                  <span>Childcare arrangements</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="challenges" value="housing" />
+                  <span>Housing issues</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="challenges" value="employment" />
+                  <span>Finding employment</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="challenges" value="emotional" />
+                  <span>Emotional support</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="challenges" value="legal" />
+                  <span>Legal matters</span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-income">Monthly Household Income</label>
+              <select id="register-income" name="income" required>
+                <option value="">Select income range</option>
+                <option value="below-1000">Below $1,000</option>
+                <option value="1000-2000">$1,000 - $2,000</option>
+                <option value="2000-3000">$2,000 - $3,000</option>
+                <option value="3000-4000">$3,000 - $4,000</option>
+                <option value="4000-5000">$4,000 - $5,000</option>
+                <option value="above-5000">Above $5,000</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-support">What kind of support are you looking for?</label>
+              <textarea id="register-support" name="support" rows="4" placeholder="Tell us about your needs and how we can help..."></textarea>
+            </div>
+          </div>
+
+          <div id="register-error" class="register-error" role="alert" hidden></div>
+          <button type="submit" class="btn btn-primary register-submit">Create Account</button>
+          <p class="register-login-link">Already have an account? <a href="login.html">Login</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p><a href="contact.html">Contact</a> &nbsp;·&nbsp; &copy; 2026 SingleParentSG. Not an official government site.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bottom Nav (Mobile) -->
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="../index.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="resources.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">📋</span>
+      <span>Resources</span>
+    </a>
+    <a href="community.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">💬</span>
+      <span>Community</span>
+    </a>
+    <a href="village.html" class="bottom-nav-link">
+      <span class="bottom-nav-icon" aria-hidden="true">🤝</span>
+      <span>Village</span>
+    </a>
+    <a href="profile.html" class="bottom-nav-link auth-bottom-profile" id="bottom-nav-profile">
+      <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/register.js"></script>
+</body>
+</html>

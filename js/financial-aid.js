@@ -1,21 +1,12 @@
 // Interactions for Financial Aid page
-
-// Mobile navigation toggle
-const navToggle = document.querySelector(".nav-toggle");
-const nav = document.querySelector(".site-nav");
-
-if (navToggle && nav) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-}
+// Nav toggle is handled by header.js
 
 // Advanced Filters Toggle
 const toggleFiltersBtn = document.getElementById("toggle-advanced-filters");
 const advancedFiltersPanel = document.getElementById("advanced-filters");
 
 if (toggleFiltersBtn && advancedFiltersPanel) {
+  advancedFiltersPanel.classList.add("hidden");
   toggleFiltersBtn.addEventListener("click", () => {
     const isHidden = advancedFiltersPanel.classList.contains("hidden");
     if (isHidden) {
@@ -45,13 +36,28 @@ let visibleCards = []; // Array of card elements that match current filters
 
 function init() {
   visibleCards = Array.from(schemeCards);
+  // Pre-fill location from profile when logged in
+  var locationSelect = document.getElementById("location-filter");
+  var auth = typeof TrellisAuth !== "undefined" ? TrellisAuth : null;
+  if (auth && auth.isLoggedIn && auth.isLoggedIn() && locationSelect) {
+    var user = auth.getCurrentUser && auth.getCurrentUser();
+    var loc = user && user.location ? user.location : "";
+    if (loc) {
+      locationSelect.value = loc;
+      if (advancedFiltersPanel && advancedFiltersPanel.classList.contains("hidden")) {
+        advancedFiltersPanel.classList.remove("hidden");
+        if (toggleFiltersBtn) {
+          toggleFiltersBtn.textContent = "Hide Advanced Filters";
+          toggleFiltersBtn.setAttribute("aria-expanded", "true");
+        }
+      }
+    }
+  }
   renderPage(1);
   setupPagination();
-  
-  // Update results text on initial load - always show total
   if (filterResults) {
-    const totalSchemes = schemeCards.length;
-    filterResults.innerHTML = `Showing all <strong>${totalSchemes}</strong> result${totalSchemes !== 1 ? 's' : ''}`;
+    var totalSchemes = schemeCards.length;
+    filterResults.innerHTML = "Showing all <strong>" + totalSchemes + "</strong> result" + (totalSchemes !== 1 ? "s" : "");
     filterResults.style.display = "";
   }
 }
@@ -228,6 +234,8 @@ if (searchInput) {
 if (clearFiltersBtn) {
   clearFiltersBtn.addEventListener("click", () => {
     if (searchInput) searchInput.value = "";
+    var locEl = document.getElementById("location-filter");
+    if (locEl) locEl.value = "";
     setTimeout(filterSchemes, 10);
   });
 }
