@@ -50,60 +50,154 @@
 
   <main id="main-content">
     <div class="app-home">
-      <section class="app-welcome" aria-label="Welcome">
-        <span class="app-welcome-badge">For Single Parents in Singapore</span>
-        <h1>Your support, all in one place.</h1>
-        <p class="app-welcome-tagline">Find resources, join the community, swap tasks, and redeem Community Credits. You're not alone.</p>
+      <!-- Full-Width Hero Section -->
+      <section class="app-hero" aria-label="Welcome" id="app-hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+          <div class="hero-text">
+            <span class="hero-badge">For Single Parents in Singapore</span>
+            <h1 id="hero-heading">Your support, all in one place.</h1>
+            <p class="hero-tagline" id="hero-tagline">Find resources, join the community, swap tasks, and redeem Community Credits. You're not alone.</p>
+          </div>
+          <div class="hero-stats" id="hero-stats" hidden>
+            <div class="hero-stat-card">
+              <span class="hero-stat-value" id="hero-credits">0</span>
+              <span class="hero-stat-label">Credits</span>
+            </div>
+            <div class="hero-stat-card">
+              <span class="hero-stat-value" id="hero-tasks">0</span>
+              <span class="hero-stat-label">Active Tasks</span>
+            </div>
+            <div class="hero-stat-card">
+              <span class="hero-stat-value" id="hero-community">1,200+</span>
+              <span class="hero-stat-label">Parents</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <div class="app-container">
-        <p class="app-quick-label" id="quick-label">What you can do</p>
-        <div class="app-tiles" role="navigation" aria-labelledby="quick-label">
-          <a href="html/resources.html" class="app-tile fade-in">
-            <span class="app-tile-icon" aria-hidden="true">📋</span>
-            <span class="app-tile-title">Resources Directory</span>
-            <span class="app-tile-sub">Find childcare centres, food support, family service centres, and community services near you. Filter by location and get personalized results.</span>
-            <span class="app-tile-arrow" aria-hidden="true">›</span>
-          </a>
-          <a href="html/financial-aid.html" class="app-tile fade-in">
-            <span class="app-tile-icon" aria-hidden="true">💰</span>
-            <span class="app-tile-title">Financial Aid Guide</span>
-            <span class="app-tile-sub">Clear guides to ComCare, KidSTART, education bursaries, and other government schemes. Know what you're eligible for and how to apply.</span>
-            <span class="app-tile-arrow" aria-hidden="true">›</span>
-          </a>
-          <a href="html/community.html" class="app-tile fade-in">
-            <span class="app-tile-icon" aria-hidden="true">💬</span>
-            <span class="app-tile-title">The Huddle</span>
-            <span class="app-tile-sub">Safe, anonymous community discussions. Share experiences, ask for advice, celebrate wins. Create or join groups and chat with other parents.</span>
-            <span class="app-tile-arrow" aria-hidden="true">›</span>
-          </a>
-          <a href="html/village.html" class="app-tile fade-in">
-            <span class="app-tile-icon" aria-hidden="true">🤝</span>
-            <span class="app-tile-title">Village Board</span>
-            <span class="app-tile-sub">Post tasks you need help with or accept tasks from others. Earn Community Credits for helping and redeem them for vouchers.</span>
-            <span class="app-tile-arrow" aria-hidden="true">›</span>
-          </a>
-          <a href="html/notifications.html" class="app-tile fade-in">
-            <span class="app-tile-icon" aria-hidden="true">🔔</span>
-            <span class="app-tile-title">Notifications</span>
-            <span class="app-tile-sub">Stay informed about task acceptances, credits earned, vouchers redeemed, and community activity. All updates in one place.</span>
-            <span class="app-tile-arrow" aria-hidden="true">›</span>
-          </a>
-          <a href="html/login.html" class="app-tile fade-in" id="app-tile-profile">
-            <span class="app-tile-icon" aria-hidden="true">👤</span>
-            <span class="app-tile-title">Profile & Account</span>
-            <span class="app-tile-sub">Sign in to access Village, post tasks, join discussions, manage your Community Credits, and redeem vouchers. Sign up to get started.</span>
-            <span class="app-tile-arrow" aria-hidden="true">›</span>
-          </a>
-        </div>
+        <!-- Quick Actions Bar (Always Visible) -->
+        <section class="app-actions-bar" aria-label="Quick actions">
+          <div class="actions-scroll">
+            <a href="html/village.html" class="action-btn" id="action-post-task">
+              <span class="action-btn-icon">📝</span>
+              <span class="action-btn-text">Post Task</span>
+            </a>
+            <a href="html/community.html" class="action-btn" id="action-discuss">
+              <span class="action-btn-icon">💬</span>
+              <span class="action-btn-text">Discuss</span>
+            </a>
+            <a href="html/resources.html" class="action-btn" id="action-resources">
+              <span class="action-btn-icon">🔍</span>
+              <span class="action-btn-text">Resources</span>
+            </a>
+            <a href="html/financial-aid.html" class="action-btn" id="action-financial">
+              <span class="action-btn-icon">💰</span>
+              <span class="action-btn-text">Financial Aid</span>
+            </a>
+            <a href="html/notifications.html" class="action-btn" id="action-notifications">
+              <span class="action-btn-icon">🔔</span>
+              <span class="action-btn-text">Alerts</span>
+              <span class="action-badge" id="action-notification-badge" hidden>0</span>
+            </a>
+            <a href="html/profile.html" class="action-btn" id="action-profile">
+              <span class="action-btn-icon">👤</span>
+              <span class="action-btn-text">Profile</span>
+            </a>
+          </div>
+        </section>
 
-        <section class="app-cta">
-          <h2>You don't have to do this alone</h2>
-          <p>Connect with resources, join a supportive community, swap tasks with other parents, and redeem Community Credits for government-backed vouchers. Start your journey today.</p>
-          <div class="app-cta-actions cta-actions">
-            <a href="html/login.html" class="btn btn-primary">Sign in</a>
-            <a href="html/register.html" class="btn btn-secondary">Sign up</a>
-            <a href="html/contact.html" class="btn btn-secondary">Contact & hotlines</a>
+        <!-- Activity Feed (Logged In) -->
+        <section class="app-feed" id="app-feed-section" hidden aria-label="Recent activity">
+          <div class="feed-header">
+            <h2 class="feed-title">Recent Activity</h2>
+            <div class="feed-tabs">
+              <button type="button" class="feed-tab feed-tab-active" data-feed="all">All</button>
+              <button type="button" class="feed-tab" data-feed="discussions">Discussions</button>
+              <button type="button" class="feed-tab" data-feed="tasks">Tasks</button>
+            </div>
+          </div>
+          <div class="feed-content" id="feed-content">
+            <!-- Feed items will be populated by JavaScript -->
+          </div>
+        </section>
+
+        <!-- Featured Sections -->
+        <section class="app-sections" aria-label="Main features">
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-icon">💬</span>
+              <div class="section-card-info">
+                <h3 class="section-card-title">The Huddle</h3>
+                <p class="section-card-desc">Join community discussions</p>
+              </div>
+            </div>
+            <a href="html/community.html" class="section-card-link">View discussions →</a>
+          </div>
+
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-icon">🤝</span>
+              <div class="section-card-info">
+                <h3 class="section-card-title">Village Board</h3>
+                <p class="section-card-desc">Swap tasks with other parents</p>
+              </div>
+            </div>
+            <a href="html/village.html" class="section-card-link">Browse tasks →</a>
+          </div>
+
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-icon">📋</span>
+              <div class="section-card-info">
+                <h3 class="section-card-title">Resources</h3>
+                <p class="section-card-desc">Find support near you</p>
+              </div>
+            </div>
+            <a href="html/resources.html" class="section-card-link">Explore resources →</a>
+          </div>
+
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-icon">💰</span>
+              <div class="section-card-info">
+                <h3 class="section-card-title">Financial Aid</h3>
+                <p class="section-card-desc">Government schemes guide</p>
+              </div>
+            </div>
+            <a href="html/financial-aid.html" class="section-card-link">Learn more →</a>
+          </div>
+        </section>
+
+        <!-- Community Stats (For Non-Logged In) -->
+        <section class="app-stats" id="app-stats-section" aria-label="Community statistics">
+          <h2 class="stats-title">Join Our Community</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">1,200+</span>
+              <span class="stat-label">Active Parents</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">350+</span>
+              <span class="stat-label">Tasks Completed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">890+</span>
+              <span class="stat-label">Discussions</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section (Only for non-logged in users) -->
+        <section class="app-cta" id="app-cta-section">
+          <div class="cta-content">
+            <h2>You don't have to do this alone</h2>
+            <p>Connect with resources, join a supportive community, swap tasks with other parents, and redeem Community Credits for government-backed vouchers.</p>
+            <div class="app-cta-actions">
+              <a href="html/register.html" class="btn btn-primary">Get Started</a>
+              <a href="html/login.html" class="btn btn-secondary">Sign In</a>
+            </div>
           </div>
         </section>
       </div>
