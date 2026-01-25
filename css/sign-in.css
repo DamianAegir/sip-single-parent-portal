@@ -1,5 +1,13 @@
 /* Sign-in page – Calm & Clarity */
 
+/* Auth pages header: logo left, back right */
+.auth-page-header .auth-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .sign-in-section {
   padding-top: 4rem;
   padding-bottom: 5rem;
@@ -8,6 +16,11 @@
 .sign-in-container {
   max-width: 420px;
   margin: 0 auto;
+}
+
+.sign-in-container .section-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .sign-in-form .form-group {
@@ -56,8 +69,34 @@
 .sign-in-submit {
   width: 100%;
   margin-top: 0.5rem;
-  min-height: 48px;
+  min-height: 52px;
   font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sign-in-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.sign-in-signup-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.sign-in-signup-link a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sign-in-signup-link a:hover {
+  text-decoration: underline;
 }
 
 .sign-in-demo {
@@ -93,6 +132,15 @@
 .sign-in-back {
   min-height: 44px;
   white-space: nowrap;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .sign-in-back {
+    padding: 0.35rem 0.6rem;
+    min-height: 32px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 479px) {
@@ -103,5 +151,11 @@
   .sign-in-form input {
     padding: 0.75rem 1rem;
     font-size: 16px;
+  }
+  
+  .sign-in-back {
+    padding: 0.3rem 0.5rem;
+    min-height: 28px;
+    font-size: 0.75rem;
   }
 }

@@ -1,5 +1,18 @@
 /* Chat page – Telegram-style redesign */
 
+/* Ensure body and html don't add extra space on chat pages */
+body:has(.chat-main) {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body:has(.chat-main) main {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 .chat-header {
   position: sticky;
   top: 0;
@@ -107,8 +120,19 @@
   display: flex;
   flex-direction: column;
   height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
+  max-height: calc(100vh - 60px);
   background: var(--bg-body);
   position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .chat-main {
+    height: calc(100dvh - 60px);
+    min-height: calc(100dvh - 60px);
+    max-height: calc(100dvh - 60px);
+  }
 }
 
 .chat-messages {
@@ -253,6 +277,7 @@
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  flex-shrink: 0;
 }
 
 .chat-quick-replies::-webkit-scrollbar {
@@ -466,6 +491,10 @@
 }
 
 @media (max-width: 479px) {
+  body:has(.chat-main) {
+    height: 100dvh;
+  }
+  
   .chat-header-inner {
     padding: 0.65rem 0.75rem;
   }

@@ -40,8 +40,36 @@
       notifications = notifications.slice(0, MAX_NOTIFICATIONS);
     }
     saveNotifications(notifications);
+    // Update badge immediately and also trigger full update
     updateNotificationBadge();
+    // Also immediately update bottom nav badge for faster response
+    setTimeout(function() {
+      updateBottomNavBadge();
+    }, 0);
     return notification;
+  }
+  
+  function updateBottomNavBadge() {
+    var count = getUnreadCount();
+    var bottomNavProfile = document.getElementById('bottom-nav-profile');
+    if (bottomNavProfile) {
+      var existingBadge = bottomNavProfile.querySelector('.bottom-nav-notification-badge');
+      if (count > 0) {
+        if (!existingBadge) {
+          existingBadge = document.createElement('span');
+          existingBadge.className = 'bottom-nav-notification-badge';
+          bottomNavProfile.appendChild(existingBadge);
+        }
+        existingBadge.textContent = count > 99 ? '99+' : String(count);
+        existingBadge.hidden = false;
+        existingBadge.style.display = '';
+      } else {
+        if (existingBadge) {
+          existingBadge.hidden = true;
+          existingBadge.style.display = 'none';
+        }
+      }
+    }
   }
 
   function markAsRead(id) {
@@ -89,17 +117,24 @@
 
   function updateNotificationBadge() {
     var count = getUnreadCount();
-    var badges = document.querySelectorAll('.notification-badge, .notifications-badge');
+    var badges = document.querySelectorAll('.notification-badge, .notifications-badge, .auth-user-notification-badge, .bottom-nav-notification-badge, .profile-notification-badge');
     badges.forEach(function (badge) {
       if (count > 0) {
         badge.textContent = count > 99 ? '99+' : String(count);
-        badge.style.display = '';
         badge.hidden = false;
+        // Set appropriate display based on badge type
+        if (badge.classList.contains('profile-notification-badge')) {
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = '';
+        }
       } else {
-        badge.style.display = 'none';
         badge.hidden = true;
+        badge.style.display = 'none';
       }
     });
+    // Also update bottom nav badge
+    updateBottomNavBadge();
   }
 
   global.TrellisNotifications = {
@@ -110,7 +145,8 @@
     delete: deleteNotification,
     clearAll: clearAll,
     getUnreadCount: getUnreadCount,
-    updateBadge: updateNotificationBadge
+    updateBadge: updateNotificationBadge,
+    updateBottomNavBadge: updateBottomNavBadge
   };
 
   // Update badge on load

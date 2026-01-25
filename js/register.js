@@ -36,10 +36,37 @@
     data.location = formData.get('location') || '';
     data.children = parseInt(formData.get('children') || '0', 10);
     data.income = formData.get('income') || '';
-    data.support = formData.get('support') || '';
     
-    // Checkboxes
-    data.challenges = formData.getAll('challenges') || [];
+    // New profile fields
+    data.familyBackground = formData.get('familyBackground') || '';
+    data.likes = formData.get('likes') || '';
+    data.dislikes = formData.get('dislikes') || '';
+    
+    // Challenges - parse from textarea (one per line)
+    var challengesText = formData.get('challenges') || '';
+    data.challenges = challengesText.split('\n')
+      .map(function(line) { return line.trim(); })
+      .filter(function(line) { return line.length > 0; });
+    
+    // Top 3 Needs
+    data.needs = [];
+    var need1Title = formData.get('need1Title') || '';
+    var need1Desc = formData.get('need1Desc') || '';
+    if (need1Title) {
+      data.needs.push({ title: need1Title, description: need1Desc });
+    }
+    
+    var need2Title = formData.get('need2Title') || '';
+    var need2Desc = formData.get('need2Desc') || '';
+    if (need2Title) {
+      data.needs.push({ title: need2Title, description: need2Desc });
+    }
+    
+    var need3Title = formData.get('need3Title') || '';
+    var need3Desc = formData.get('need3Desc') || '';
+    if (need3Title) {
+      data.needs.push({ title: need3Title, description: need3Desc });
+    }
     
     return data;
   }
@@ -71,10 +98,6 @@
     }
     if (!data.children || data.children < 1) {
       showError('Please enter the number of children.');
-      return false;
-    }
-    if (!data.income) {
-      showError('Please select your income range.');
       return false;
     }
     return true;
@@ -111,8 +134,11 @@
       location: data.location,
       children: data.children,
       income: data.income,
+      familyBackground: data.familyBackground.trim(),
+      likes: data.likes.trim(),
+      dislikes: data.dislikes.trim(),
       challenges: data.challenges,
-      support: data.support.trim(),
+      needs: data.needs,
       avatar: createAvatar(data.displayName.trim()),
       communityCredits: 50, // Starting credits
     };

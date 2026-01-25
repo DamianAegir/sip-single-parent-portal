@@ -20,6 +20,28 @@
     children: 2,
     location: 'Punggol',
     communityCredits: 50,
+    familyBackground: 'Was married until partner cheated, causing him to have to take care of both kids. Financial struggles are prominent.',
+    likes: 'Takes great pride in maintaining a clean and organized environment. Enjoys having a small, close circle of friends for stress relief.',
+    dislikes: 'Dislikes asking for help, especially financial aid due to shame.',
+    challenges: [
+      'Low salary and lack of paid sick leave',
+      'Too tired, No Time',
+      'Physically demanding work hours'
+    ],
+    needs: [
+      {
+        title: 'Caregiving Support',
+        description: 'I need accessible caregiving support so I can better manage essential household responsibilities without sacrificing time, energy, or presence in my child\'s lives'
+      },
+      {
+        title: 'Peer Support',
+        description: 'I need to feel understood, connected and have access to peer support services/groups with relevant and helpful information'
+      },
+      {
+        title: 'Financial Aid',
+        description: 'I need a straightforward way to identify financial help that accepts my unique family status, allowing me to seek support without feeling like a burden.'
+      }
+    ]
   };
 
   function getBase() {
@@ -74,6 +96,11 @@
         children: DEMO_ACCOUNT.children,
         location: DEMO_ACCOUNT.location,
         communityCredits: DEMO_ACCOUNT.communityCredits,
+        familyBackground: DEMO_ACCOUNT.familyBackground,
+        likes: DEMO_ACCOUNT.likes,
+        dislikes: DEMO_ACCOUNT.dislikes,
+        challenges: DEMO_ACCOUNT.challenges,
+        needs: DEMO_ACCOUNT.needs,
       };
       setUser(user);
       return user;

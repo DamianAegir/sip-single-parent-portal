@@ -97,42 +97,76 @@
           </div>
 
           <div class="form-section">
-            <h3 class="form-section-title">Your Challenges & Needs</h3>
+            <h3 class="form-section-title">Family Background</h3>
             
             <div class="form-group">
-              <label>What are your main challenges? (Select all that apply)</label>
-              <div class="checkbox-group">
-                <label class="checkbox-label">
-                  <input type="checkbox" name="challenges" value="financial" />
-                  <span>Financial difficulties</span>
-                </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" name="challenges" value="childcare" />
-                  <span>Childcare arrangements</span>
-                </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" name="challenges" value="housing" />
-                  <span>Housing issues</span>
-                </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" name="challenges" value="employment" />
-                  <span>Finding employment</span>
-                </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" name="challenges" value="emotional" />
-                  <span>Emotional support</span>
-                </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" name="challenges" value="legal" />
-                  <span>Legal matters</span>
-                </label>
-              </div>
+              <label for="register-family-background">Tell us about your family situation</label>
+              <textarea id="register-family-background" name="familyBackground" rows="3" placeholder="e.g. Was married until partner cheated, causing me to take care of both kids. Financial struggles are prominent."></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="form-section-title">Likes & Dislikes</h3>
+            
+            <div class="form-group">
+              <label for="register-likes">What do you like or take pride in?</label>
+              <textarea id="register-likes" name="likes" rows="2" placeholder="e.g. Takes great pride in maintaining a clean and organized environment. Enjoys having a small, close circle of friends for stress relief."></textarea>
             </div>
             
             <div class="form-group">
+              <label for="register-dislikes">What do you dislike or find difficult?</label>
+              <textarea id="register-dislikes" name="dislikes" rows="2" placeholder="e.g. Dislikes asking for help, especially financial aid due to shame."></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="form-section-title">Your Challenges</h3>
+            
+            <div class="form-group">
+              <label for="register-challenges">What are your main challenges? (One per line)</label>
+              <textarea id="register-challenges" name="challenges" rows="4" placeholder="e.g. Low salary and lack of paid sick leave&#10;Too tired, No Time&#10;Physically demanding work hours"></textarea>
+              <small>Enter each challenge on a new line</small>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="form-section-title">Your Top 3 Needs</h3>
+            
+            <div class="form-group">
+              <label for="register-need-1-title">Need 1: Title</label>
+              <input type="text" id="register-need-1-title" name="need1Title" placeholder="e.g. Caregiving Support" />
+            </div>
+            <div class="form-group">
+              <label for="register-need-1-desc">Need 1: Description</label>
+              <textarea id="register-need-1-desc" name="need1Desc" rows="2" placeholder="e.g. I need accessible caregiving support so I can better manage essential household responsibilities..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-need-2-title">Need 2: Title</label>
+              <input type="text" id="register-need-2-title" name="need2Title" placeholder="e.g. Peer Support" />
+            </div>
+            <div class="form-group">
+              <label for="register-need-2-desc">Need 2: Description</label>
+              <textarea id="register-need-2-desc" name="need2Desc" rows="2" placeholder="Describe your second most important need..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-need-3-title">Need 3: Title</label>
+              <input type="text" id="register-need-3-title" name="need3Title" placeholder="e.g. Financial Aid" />
+            </div>
+            <div class="form-group">
+              <label for="register-need-3-desc">Need 3: Description</label>
+              <textarea id="register-need-3-desc" name="need3Desc" rows="2" placeholder="Describe your third most important need..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="form-section-title">Additional Information</h3>
+            
+            <div class="form-group">
               <label for="register-income">Monthly Household Income</label>
-              <select id="register-income" name="income" required>
-                <option value="">Select income range</option>
+              <select id="register-income" name="income">
+                <option value="">Select income range (optional)</option>
                 <option value="below-1000">Below $1,000</option>
                 <option value="1000-2000">$1,000 - $2,000</option>
                 <option value="2000-3000">$2,000 - $3,000</option>
@@ -140,11 +174,6 @@
                 <option value="4000-5000">$4,000 - $5,000</option>
                 <option value="above-5000">Above $5,000</option>
               </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="register-support">What kind of support are you looking for?</label>
-              <textarea id="register-support" name="support" rows="4" placeholder="Tell us about your needs and how we can help..."></textarea>
             </div>
           </div>
 

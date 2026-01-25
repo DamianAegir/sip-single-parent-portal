@@ -25,10 +25,7 @@
       <nav class="site-nav" aria-label="Main">
         <ul class="nav-list">
           <li class="nav-item-resources">
-            <div class="nav-resources-row">
-              <a href="resources.html" class="nav-link">Resources</a>
-              <button type="button" class="nav-resources-toggle" aria-expanded="false" aria-label="Open Resources menu">▾</button>
-            </div>
+            <a href="resources.html" class="nav-link nav-resources-link">Resources</a>
             <ul class="nav-resources-dropdown">
               <li><a href="resources.html">Resources</a></li>
               <li><a href="financial-aid.html">Financial Aid</a></li>
@@ -36,6 +33,8 @@
           </li>
           <li><a href="community.html" class="nav-link">Community</a></li>
           <li class="nav-item-village"><a href="village.html" class="nav-link">Village</a></li>
+          <li class="nav-item-vouchers"><a href="vouchers.html" class="nav-link">Redeem</a></li>
+          <li class="nav-item-notifications"><a href="notifications.html" class="nav-link">Notifications</a></li>
         </ul>
       </nav>
       <div id="header-auth"></div>
@@ -88,8 +87,41 @@
             </div>
           </div>
 
-          <div class="profile-actions">
-            <a href="vouchers.html" class="btn btn-primary">Redeem Vouchers</a>
+          <div class="profile-info-section">
+            <h4 class="profile-info-title">Family Background</h4>
+            <p class="profile-info-text" id="profile-family-background"></p>
+          </div>
+
+          <div class="profile-info-section">
+            <h4 class="profile-info-title">Likes & Dislikes</h4>
+            <p class="profile-likes" id="profile-likes"></p>
+            <p class="profile-dislikes" id="profile-dislikes"></p>
+          </div>
+
+          <div class="profile-info-section">
+            <h4 class="profile-info-title">Challenges</h4>
+            <ul class="profile-challenges-list" id="profile-challenges"></ul>
+          </div>
+
+          <div class="profile-info-section">
+            <h4 class="profile-info-title">Top 3 Needs</h4>
+            <ul class="profile-needs-list" id="profile-needs"></ul>
+          </div>
+
+          <div class="profile-info-section">
+            <h4 class="profile-info-title">Redeemed Vouchers</h4>
+            <div class="profile-redeemed-vouchers" id="profile-redeemed-vouchers">
+              <p class="profile-empty-message">No vouchers redeemed yet.</p>
+            </div>
+          </div>
+
+          <div class="profile-actions" id="profile-actions">
+            <a href="notifications.html" class="btn btn-secondary profile-notifications-btn" id="profile-notifications-btn" style="display: none;">
+              <span>🔔</span>
+              <span>Notifications</span>
+              <span class="profile-notification-badge" id="profile-notification-badge" hidden>0</span>
+            </a>
+            <a href="vouchers.html" class="btn btn-primary" id="profile-redeem-btn" style="display: none;">Redeem Vouchers</a>
           </div>
         </div>
       </div>

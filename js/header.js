@@ -36,7 +36,7 @@
         '<button type="button" class="auth-user-trigger" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">' +
           avatar +
           '<span class="auth-user-name">' + escapeHtml(name) + '</span>' +
-          '<span class="auth-user-chevron" aria-hidden="true">▾</span>' +
+          '<span class="auth-user-notification-badge" id="auth-user-notification-badge" hidden>0</span>' +
         '</button>' +
         '<div class="auth-dropdown" hidden>' +
           '<a href="' + authHref('notifications.html') + '" class="auth-dropdown-item">' +
@@ -99,6 +99,9 @@
           window.location.reload();
         });
       }
+      
+      // Update notification badges after rendering
+      setTimeout(updateNotificationBadge, 100);
     } else {
       container.innerHTML = renderSignIn();
       container.classList.remove('auth-logged-in');
@@ -120,43 +123,105 @@
   }
 
   function initResourcesDropdown() {
-    var trigger = document.querySelector('.nav-resources-toggle');
+    var resourcesLink = document.querySelector('.nav-resources-link');
     var dropdown = document.querySelector('.nav-resources-dropdown');
-    if (!trigger || !dropdown) return;
+    var resourcesItem = document.querySelector('.nav-item-resources');
+    if (!resourcesLink || !dropdown || !resourcesItem) return;
 
-    trigger.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var open = dropdown.classList.toggle('open');
-      trigger.setAttribute('aria-expanded', String(open));
-      if (open) document.addEventListener('click', closeResourcesDropdown);
-      else document.removeEventListener('click', closeResourcesDropdown);
-    });
+    // Only enable dropdown toggle on desktop (not mobile)
+    var isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    
+    if (!isMobile) {
+      // Click functionality
+      resourcesLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = dropdown.classList.toggle('open');
+        resourcesLink.setAttribute('aria-expanded', String(open));
+        if (open) document.addEventListener('click', closeResourcesDropdown);
+        else document.removeEventListener('click', closeResourcesDropdown);
+      });
 
-    function closeResourcesDropdown() {
-      dropdown.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-      document.removeEventListener('click', closeResourcesDropdown);
+      // Hover functionality
+      resourcesItem.addEventListener('mouseenter', function () {
+        dropdown.classList.add('open');
+        resourcesLink.setAttribute('aria-expanded', 'true');
+      });
+
+      resourcesItem.addEventListener('mouseleave', function () {
+        dropdown.classList.remove('open');
+        resourcesLink.setAttribute('aria-expanded', 'false');
+      });
+
+      function closeResourcesDropdown() {
+        dropdown.classList.remove('open');
+        resourcesLink.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', closeResourcesDropdown);
+      }
     }
   }
 
   function initNavToggle() {
     var navToggle = document.querySelector('.nav-toggle');
     var nav = document.querySelector('.site-nav');
-    if (!navToggle || !nav) return;
+    var navList = nav ? nav.querySelector('.nav-list') : null;
+    if (!navToggle || !nav || !navList) return;
+
+    function addSignOutOption() {
+      // Remove existing sign out if present
+      var existing = navList.querySelector('.nav-item-signout');
+      if (existing) {
+        existing.remove();
+      }
+
+      var auth = typeof TrellisAuth !== 'undefined' ? TrellisAuth : null;
+      var isLoggedIn = auth && auth.isLoggedIn && auth.isLoggedIn();
+      var isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+
+      if (isLoggedIn && isMobile) {
+        var signOutLi = document.createElement('li');
+        signOutLi.className = 'nav-item-signout';
+        signOutLi.innerHTML = '<button type="button" class="nav-link nav-signout-btn">Sign Out</button>';
+        navList.appendChild(signOutLi);
+
+        var signOutBtn = signOutLi.querySelector('.nav-signout-btn');
+        if (signOutBtn) {
+          signOutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (auth && auth.signOut) {
+              auth.signOut();
+              nav.classList.remove('open');
+              navToggle.setAttribute('aria-expanded', 'false');
+              window.location.reload();
+            }
+          });
+        }
+      }
+    }
 
     navToggle.addEventListener('click', function () {
       var isOpen = nav.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        addSignOutOption();
+      }
     });
 
     nav.addEventListener('click', function (e) {
       var link = e.target.closest ? e.target.closest('a') : null;
+      var signOutBtn = e.target.closest ? e.target.closest('.nav-signout-btn') : null;
       if (link && (link.classList.contains('nav-link') || link.closest('.nav-resources-dropdown'))) {
         nav.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
       }
+      // Don't close menu when clicking sign out button (it handles its own logic)
+      if (signOutBtn) {
+        return;
+      }
     });
+
+    // Also add on initial load if menu is already open (shouldn't happen, but just in case)
+    addSignOutOption();
   }
 
   function setBottomNavProfile() {
@@ -181,6 +246,50 @@
     var notif = typeof TrellisNotifications !== 'undefined' ? TrellisNotifications : null;
     if (notif && notif.updateBadge) {
       notif.updateBadge();
+    }
+    
+    // Also update auth user badge and bottom nav badge
+    var count = notif && notif.getUnreadCount ? notif.getUnreadCount() : 0;
+    
+    // Update auth user badge
+    var authBadge = document.getElementById('auth-user-notification-badge');
+    if (authBadge) {
+      if (count > 0) {
+        authBadge.textContent = count > 99 ? '99+' : String(count);
+        authBadge.hidden = false;
+      } else {
+        authBadge.hidden = true;
+      }
+    }
+    
+    // Update bottom nav profile badge
+    var bottomNavProfile = document.getElementById('bottom-nav-profile');
+    if (bottomNavProfile) {
+      var existingBadge = bottomNavProfile.querySelector('.bottom-nav-notification-badge');
+      if (count > 0) {
+        if (!existingBadge) {
+          existingBadge = document.createElement('span');
+          existingBadge.className = 'bottom-nav-notification-badge';
+          bottomNavProfile.appendChild(existingBadge);
+        }
+        existingBadge.textContent = count > 99 ? '99+' : String(count);
+        existingBadge.hidden = false;
+      } else {
+        if (existingBadge) {
+          existingBadge.hidden = true;
+        }
+      }
+    }
+    
+    // Update profile page notification badge
+    var profileBadge = document.getElementById('profile-notification-badge');
+    if (profileBadge) {
+      if (count > 0) {
+        profileBadge.textContent = count > 99 ? '99+' : String(count);
+        profileBadge.hidden = false;
+      } else {
+        profileBadge.hidden = true;
+      }
     }
   }
 
